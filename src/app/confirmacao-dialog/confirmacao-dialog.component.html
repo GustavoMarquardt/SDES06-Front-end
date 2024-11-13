@@ -1,8 +1,10 @@
-<h1 mat-dialog-title>Confirmação</h1>
-<div mat-dialog-content>
-  <p>{{ data.mensagem }}</p>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="dialogRef.close('confirmado')">Confirmar</button>
-  <button mat-button (click)="dialogRef.close('cancelado')">Cancelar</button>
+
+<div class="bg-default h-full w-full">
+  <div mat-dialog-content>
+    <p class="text-white text-2xl text-center">{{ data.mensagem }}</p>
+  </div>
+  <div mat-dialog-actions class="flex flex-row justify-center content-center space-x-6">
+    <button mat-button (click)="dialogRef.close('confirmado')" class="button-default">Confirmar</button>
+    <button mat-button (click)="dialogRef.close('cancelado')" class="button-default">Cancelar</button>
+  </div>
 </div>

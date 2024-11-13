@@ -110,7 +110,6 @@ export class LobbyComponent {
     this.festasService.excluirFesta(festaId).subscribe({
       next: () => {
         this.getFestas(); // Atualiza a lista de festas após a exclusão
-        
       },
       error: (error) => {
         console.error(error);
@@ -135,8 +134,11 @@ export class LobbyComponent {
     this.router.navigate(['/cadastrarFesta']);
   }
 
+  navigateToLogout(): void {
+    this.router.navigate(['/']);
+  }
+
   navigateToEdit():void{
-    console.log('BORAAAA');
     this.router.navigate(['/editarPerfil']);
   }
 }

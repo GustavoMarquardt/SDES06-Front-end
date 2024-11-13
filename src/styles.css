@@ -1,11 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
 
 .mat-dialog-container {
   margin: auto;            /* Garante que o conteúdo do diálogo esteja centralizado */
   position: relative;
   top: 10%;
+}
+
+@layer components {
+  .button-default {
+    @apply bg-cyan-950 hover:bg-cyan-400 
+           text-white hover:text-black
+           duration-200 ease-in-out
+           rounded
+           w-fit h-fit
+           border-4 border-cyan-950 hover:border-cyan-400
+
+  }
+
+  .bg-default{
+    @apply  bg-neutral-900 
+              flex w-full h-full
+              content-center justify-center
+              border-8 border-neutral-900
+              space-y-9
+  }
+
+  .div-default{
+    @apply bg-neutral-800
+             flex flex-col
+             content-center justify-center justify-self-center self-center
+             border-8 border-neutral-800
+             rounded
+             h-fit
+             w-3/12
+             p-4
+             shadow-neutral-600
+  }
+
+  .title-default{
+    @apply text-neutral-200 text-sm font-bold justify-self-center self-center
+  }
+  
+  .input-default{
+    @apply bg-neutral-700  focus:bg-cyan-900
+             w-9/12
+             flex
+             border-2 border-neutral-700
+             rounded
+             text-white
+  }
 }

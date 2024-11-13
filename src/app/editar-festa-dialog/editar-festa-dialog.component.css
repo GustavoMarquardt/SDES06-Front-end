@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@400;600&display=swap');
+
+/* Estilo do conteúdo do diálogo */
+mat-dialog-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilo dos campos de input dentro do diálogo */
+mat-form-field {
+  width: 100%;
+  min-height: 56px;
+  margin-bottom: 16px; /* Espaçamento entre os campos */
+}
+
+/* Estilo dos botões do diálogo */
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+/* Estilo para todos os botões */
+button {
+  background: none; /* Remove o fundo do botão */
+  border: none; /* Remove a borda do botão */
+  color: #ffffff; /* Cor branca para o texto */
+  font-size: 16px; /* Tamanho da fonte */
+  font-family: Arial, sans-serif; /* Fonte limpa */
+  cursor: pointer; /* Adiciona o cursor de "mãozinha" ao passar o mouse */
+  padding: 8px 16px; /* Padding padrão */
+  text-decoration: none; /* Remove o sublinhado */
+  text-align: center; /* Alinha o texto ao centro */
+  border-radius: 4px; /* Bordas arredondadas */
+  transition: background-color 0.3s, color 0.3s; /* Transições suaves para o hover */
+}
+
+/* Estilo de hover para os botões */
+button:hover {
+  background-color: #3cb371; /* Verde mais claro no hover */
+  color: #f0f0f0; /* Cor do texto no hover */
+}
+
+/* Estilo de foco para os botões */
+button:focus {
+  outline: none; /* Remove o contorno de foco */
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5); /* Leve sombra no foco */
+}
+
+/* Efeito de clique para os botões */
+button:active {
+  transform: scale(0.98); /* Efeito de clique, reduzindo ligeiramente o botão */
+}
+
+/* Estilo do botão "Cancelar" */
+button.mat-button:nth-child(1) {
+  background-color: #F44336; /* Vermelho para "Cancelar" */
+}
+
+button.mat-button:nth-child(1):hover {
+  background-color: #D32F2F; /* Vermelho mais escuro no hover */
+}
+
+/* Estilo do botão "Salvar" */
+button.mat-button:nth-child(2) {
+  background-color: #4CAF50; /* Verde para "Salvar" */
+}
+
+button.mat-button:nth-child(2):hover {
+  background-color: #388E3C; /* Verde mais escuro no hover */
+}

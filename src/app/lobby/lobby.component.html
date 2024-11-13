@@ -1,0 +1,46 @@
+<nav class="navbar">
+  <ul>
+    <li><button class="nav-button" (click)="navigateToCadastroFesta()">Cadastrar Festas</button></li>
+    <li><button class="nav-button" (click)="navigateToEdit()">Editar Profile</button></li>
+    <li><button class="nav-button" (click)="navigateToLogout()">Logout</button></li>
+  </ul>
+</nav>
+<table mat-table [dataSource]="festas">
+  <ng-container matColumnDef="nome_da_festa">
+    <th mat-header-cell *matHeaderCellDef> Nome da Festa </th>
+    <td mat-cell *matCellDef="let festa"> {{ festa.nome_da_festa }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="data_e_hora">
+    <th mat-header-cell *matHeaderCellDef> Data e Hora </th>
+    <td mat-cell *matCellDef="let festa"> {{ formatDate(festa.data_e_hora) }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="localizacao">
+    <th mat-header-cell *matHeaderCellDef> Localização </th>
+    <td mat-cell *matCellDef="let festa"> {{ festa.localizacao }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="capacidade">
+    <th mat-header-cell *matHeaderCellDef> Capacidade </th>
+    <td mat-cell *matCellDef="let festa"> {{ festa.capacidade }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="categoria">
+    <th mat-header-cell *matHeaderCellDef> Categoria </th>
+    <td mat-cell *matCellDef="let festa"> {{ festa.categoria }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="acoes">
+    <th mat-header-cell *matHeaderCellDef> Ações </th>
+    <td mat-cell *matCellDef="let festa">
+      <button mat-button (click)="editarFesta(festa)">Editar</button>
+      <button mat-button (click)="confirmarExclusao(festa.id)">Excluir</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+

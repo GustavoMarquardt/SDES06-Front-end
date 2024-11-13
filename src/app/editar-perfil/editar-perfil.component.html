@@ -1,0 +1,26 @@
+<div class="cadastro-container">
+  <h2>Editar Perfil</h2>
+
+  <form (ngSubmit)="editar()">
+    <div>
+      <label for="nome_completo">Nome Completo</label>
+      <input type="text" id="nome_completo" [(ngModel)]="nome_completo" name="nome_completo" required />
+    </div>
+  
+    <div>
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" [(ngModel)]="senha" name="senha" required />
+    </div>
+  
+    <div>
+      <label for="rede_social">Rede Social</label>
+      <input type="text" id="rede_social" [(ngModel)]="rede_social" name="rede_social" />
+    </div>
+  
+    <div *ngIf="errorMessage" class="error">
+      {{ errorMessage }}
+    </div>
+  
+    <button type="submit">Salvar Alterações</button>
+  </form>
+</div>

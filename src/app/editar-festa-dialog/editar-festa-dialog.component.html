@@ -1,0 +1,42 @@
+<mat-dialog-content style="padding: 20px; display: flex; flex-direction: column;">
+    <mat-form-field appearance="fill" style="width: 100%; min-height: 56px;">
+      <mat-label>Nome da Festa</mat-label>
+      <input matInput [(ngModel)]="data.nome_da_festa" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" style="width: 100%; min-height: 56px;">
+      <mat-label>Capacidade</mat-label>
+      <input matInput type="number" [(ngModel)]="data.capacidade" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" style="width: 100%; min-height: 56px;">
+      <mat-label>Categoria</mat-label>
+      <input matInput [(ngModel)]="data.categoria" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" style="width: 100%; min-height: 56px;">
+      <mat-label>Data e Hora</mat-label>
+      <input matInput [(ngModel)]="data.data_e_hora" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" style="width: 100%; min-height: 56px;">
+      <mat-label>Descrição</mat-label>
+      <textarea matInput [(ngModel)]="data.descricao"></textarea>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" style="width: 100%; min-height: 56px;">
+      <mat-label>Localização</mat-label>
+      <input matInput [(ngModel)]="data.localizacao" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" style="width: 100%; min-height: 56px;">
+      <mat-label>ID</mat-label>
+      <input matInput type="number" [(ngModel)]="data.id" disabled />
+    </mat-form-field>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions style="display: flex; justify-content: flex-end; padding: 10px;">
+    <button mat-button (click)="cancelarEdicoes()">Cancelar</button>
+    <button mat-button color="primary" (click)="salvarEdicoes()">Salvar</button>
+  </mat-dialog-actions>
+  

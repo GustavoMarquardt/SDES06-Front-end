@@ -1,0 +1,13 @@
+/* confirmacao-dialog.component.css */
+.custom-dialog-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .mat-dialog-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

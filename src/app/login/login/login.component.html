@@ -1,0 +1,34 @@
+<div class="login-container">
+    <h2>Login</h2>
+    
+    <form (ngSubmit)="login()">
+      <label for="email">Email:</label>
+      <input 
+        type="email" 
+        id="email" 
+        [(ngModel)]="email" 
+        name="email" 
+        required 
+      />
+  
+      <label for="senha">Senha:</label>
+      <input 
+        type="password" 
+        id="senha" 
+        [(ngModel)]="senha" 
+        name="senha" 
+        required 
+      />
+      
+      <button type="submit">Login</button>
+  
+      <!-- Botão para redirecionar para a página de cadastro -->
+      <button type="button" (click)="navigateToRegister()">Cadastrar</button>
+  
+      <!-- Exibição da mensagem de erro -->
+      <div *ngIf="errorMessage" class="error-message">
+        <p>{{ errorMessage }}</p>
+      </div>
+    </form>
+  </div>
+  

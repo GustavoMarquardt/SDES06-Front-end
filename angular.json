@@ -27,12 +27,14 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/magenta-violet.css",
               "src/styles.css"
             ],
             "scripts": []
           },
           "configurations": {
             "production": {
+              "aot":true,
               "budgets": [
                 {
                   "type": "initial",
@@ -48,6 +50,7 @@
               "outputHashing": "all"
             },
             "development": {
+              "aot": false, 
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
@@ -85,6 +88,7 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/magenta-violet.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -92,5 +96,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

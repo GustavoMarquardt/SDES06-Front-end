@@ -1,0 +1,52 @@
+<div class="cadastro-container">
+    <h2>Cadastrar Usuário</h2>
+  
+    <form (ngSubmit)="cadastrar()">
+      <div>
+        <label for="nome_completo">Nome Completo</label>
+        <input type="text" id="nome_completo" [(ngModel)]="nome_completo" name="nome_completo" required />
+      </div>
+  
+      <div>
+        <label for="email">E-mail</label>
+        <input type="email" id="email" [(ngModel)]="email" name="email" required />
+      </div>
+  
+      <div>
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" [(ngModel)]="senha" name="senha" required />
+      </div>
+  
+      <div>
+        <label for="data_nascimento">Data de Nascimento</label>
+        <input type="date" id="data_nascimento" [(ngModel)]="data_nascimento" name="data_nascimento" required />
+      </div>
+  
+      <div>
+        <label for="idade">Idade</label>
+        <input type="number" id="idade" [(ngModel)]="idade" name="idade" required />
+      </div>
+  
+      <div>
+        <label for="endereco">Endereço</label>
+        <input type="text" id="endereco" [(ngModel)]="endereco" name="endereco" required />
+      </div>
+  
+      <div>
+        <label for="login_academico">Login Acadêmico</label>
+        <input type="text" id="login_academico" [(ngModel)]="login_academico" name="login_academico" required />
+      </div>
+  
+      <div>
+        <label for="rede_social">Rede Social</label>
+        <input type="text" id="rede_social" [(ngModel)]="rede_social" name="rede_social" required />
+      </div>
+  
+      <div *ngIf="errorMessage" class="error">
+        {{ errorMessage }}
+      </div>
+  
+      <button type="submit">Cadastrar</button>
+    </form>
+  </div>
+  

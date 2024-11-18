@@ -15,9 +15,10 @@ export class FestasService {
   constructor(private http: HttpClient) { }
 
   // Método para obter a lista de festas
-  getAllFestas(): Observable<FestaResponse> {
-    return this.http.get<FestaResponse>(`${this.apiUrl}/listarFestas`); // Usa a interface importada
+  getAllFestas(): Observable<FestaResponse[]> {
+    return this.http.get<FestaResponse[]>(`${this.apiUrl}/listarFestas`); // Usa a interface importada
   }
+
 
   excluirFesta(festaId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/excluirFesta/${festaId}`);

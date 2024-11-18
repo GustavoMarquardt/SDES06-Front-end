@@ -34,23 +34,23 @@
           },
           "configurations": {
             "production": {
-              "aot":true,
+              "aot": true,
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumError": "700kb",
+                  "maximumWarning": "600kb"
                 },
                 {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+                  "type": "allScript",
+                  "maximumError": "700kb",
+                  "maximumWarning": "600kb"
                 }
               ],
               "outputHashing": "all"
             },
             "development": {
-              "aot": false, 
+              "aot": false,
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true

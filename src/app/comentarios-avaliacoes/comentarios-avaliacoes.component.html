@@ -1,0 +1,99 @@
+<div class="form-container">
+    <form (ngSubmit)="cadastrar()">
+      <!-- Avaliação de organização -->
+      <div>
+        <label for="organizacao">Organização</label>
+        <input 
+          type="number" 
+          id="organizacao" 
+          name="organizacao" 
+          min="1" 
+          max="5" 
+          [(ngModel)]="organizacao" 
+          required />
+      </div>
+  
+      <!-- Avaliação de qualidade da música -->
+      <div>
+        <label for="qualidade_musica">Qualidade da Música</label>
+        <input 
+          type="number" 
+          id="qualidade_musica" 
+          name="qualidade_musica" 
+          min="1" 
+          max="5" 
+          [(ngModel)]="qualidade_musica" 
+          required />
+      </div>
+  
+      <!-- Avaliação de bar -->
+      <div>
+        <label for="bar">Bar</label>
+        <input 
+          type="number" 
+          id="bar" 
+          name="bar" 
+          min="1" 
+          max="5" 
+          [(ngModel)]="bar" 
+          required />
+      </div>
+  
+      <!-- Avaliação de atendimento -->
+      <div>
+        <label for="atendimento">Atendimento</label>
+        <input 
+          type="number" 
+          id="atendimento" 
+          name="atendimento" 
+          min="1" 
+          max="5" 
+          [(ngModel)]="atendimento" 
+          required />
+      </div>
+  
+      <!-- Avaliação de localização -->
+      <div>
+        <label for="localizacao">Localização</label>
+        <input 
+          type="number" 
+          id="localizacao" 
+          name="localizacao" 
+          min="1" 
+          max="5" 
+          [(ngModel)]="localizacao" 
+          required />
+      </div>
+  
+      <!-- Avaliação de preço -->
+      <div>
+        <label for="preco">Preço</label>
+        <input 
+          type="number" 
+          id="preco" 
+          name="preco" 
+          min="1" 
+          max="5" 
+          [(ngModel)]="preco" 
+          required />
+      </div>
+
+      <div>
+        <label for="comentario">Comentário</label>
+        <input 
+          type="text" 
+          id="comentario" 
+          name="comentario" 
+          [(ngModel)]="comentario" 
+          maxlength="150" 
+          placeholder="Escreva um comentário (máximo 150 caracteres)" />
+      </div>
+  
+      <div *ngIf="errorMessage" class="error">
+        {{ errorMessage }}
+      </div>
+  
+      <button type="submit" [disabled]="form.invalid">Cadastrar</button>
+    </form>
+  </div>
+  

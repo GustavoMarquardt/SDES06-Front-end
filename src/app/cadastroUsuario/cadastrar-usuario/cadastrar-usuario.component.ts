@@ -62,4 +62,21 @@ export class CadastrarUsuarioComponent {
       }
     });
   }
+
+  navigateToCadastroFesta(): void {
+    this.router.navigate(['/cadastrarFesta']);
+  }
+
+  navigateToEdit(): void {
+    console.log('BORAAAA');
+    this.router.navigate(['/editarPerfil']);
+  }
+
+  navigateToListarFestas(): void {
+    this.router.navigate(['/listarFestas'])
+  }
+
+  navigateToMinhasFestas(): void {
+    this.router.navigate(['/lobby'])
+  }
 }

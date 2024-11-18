@@ -1,7 +1,7 @@
-import { Component, NgModule } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { FestasService } from '../services/festas.service';  // Ajuste conforme o seu serviço
+import { FestasService } from '../services/festas.service';
 import { FestaResponse } from '../../interfaces/FestaInterface';
 import { ConfirmacaoDialogComponent } from '../confirmacao-dialog/confirmacao-dialog.component';
 import { CommonModule } from '@angular/common';
@@ -11,16 +11,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { EditarFestaDialogComponent } from '../editar-festa-dialog/editar-festa-dialog.component';
 
 @Component({
+  standalone: true,
   selector: 'app-lobby',
   templateUrl: './lobby.component.html',
   styleUrls: ['./lobby.component.css'],
+  imports: [CommonModule, MatTableModule, MatCardModule, MatIconModule], // Importações de módulos para standalone
 })
-
-@NgModule({
-  declarations: [LobbyComponent],
-  imports: [CommonModule,MatTableModule,MatCardModule ,MatIconModule ],
-})
-
 export class LobbyComponent {
   festas: any[] = [];
   errorMessage: string = '';
@@ -38,26 +34,22 @@ export class LobbyComponent {
 
   getFestas(): void {
     const userId = sessionStorage.getItem('userId');
-    
     if (userId == null) {
       this.errorMessage = 'Erro ao carregar as festas';
-      return;  // Não prosseguir se o userId for nulo
+      return;
     }
-    
-    // Convertendo o userId para número
+
     const userIdNumber = Number(userId);
-    
-    // Verifique se a conversão foi bem-sucedida
     if (isNaN(userIdNumber)) {
       this.errorMessage = 'ID de usuário inválido';
       return;
     }
-  
+
     this.festasService.getFestaCriador(userIdNumber).subscribe({
       next: (data: FestaResponse) => {
-        console.log(data);  // Verifique a resposta da API no console
-        if (Array.isArray(data)) {  // Aqui esperamos que 'data' seja um array diretamente
-          this.festas = data;  // Atribua o array de festas
+        console.log(data);
+        if (Array.isArray(data)) {
+          this.festas = data;
         } else {
           console.error('Estrutura de dados inválida');
           this.errorMessage = 'Estrutura de dados inválida';
@@ -69,19 +61,18 @@ export class LobbyComponent {
       }
     });
   }
+
   editarFesta(festa: any): void {
     const dialogRef = this.dialog.open(EditarFestaDialogComponent, {
       width: '400px',
-      data: { ...festa },  // Passa os dados da festa para o diálogo
+      data: { ...festa },
     });
 
-    // Espera o retorno dos dados atualizados
     dialogRef.afterClosed().subscribe(updatedFesta => {
       if (updatedFesta) {
-        // Chama o serviço para salvar a festa editada
         this.festasService.atualizarFesta(updatedFesta).subscribe({
           next: () => {
-            this.getFestas();  // Atualiza a lista de festas
+            this.getFestas();
           },
           error: (error) => {
             console.error(error);
@@ -91,6 +82,7 @@ export class LobbyComponent {
       }
     });
   }
+
   confirmarExclusao(festaId: number): void {
     const dialogRef = this.dialog.open(ConfirmacaoDialogComponent, {
       width: '300px',
@@ -98,7 +90,7 @@ export class LobbyComponent {
       height: '200px',
       data: { mensagem: 'Tem certeza que deseja excluir esta festa?' }
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'confirmado') {
         this.excluirFesta(festaId);
@@ -109,8 +101,7 @@ export class LobbyComponent {
   excluirFesta(festaId: number): void {
     this.festasService.excluirFesta(festaId).subscribe({
       next: () => {
-        this.getFestas(); // Atualiza a lista de festas após a exclusão
-        
+        this.getFestas();
       },
       error: (error) => {
         console.error(error);
@@ -135,8 +126,16 @@ export class LobbyComponent {
     this.router.navigate(['/cadastrarFesta']);
   }
 
-  navigateToEdit():void{
+  navigateToEdit(): void {
     console.log('BORAAAA');
     this.router.navigate(['/editarPerfil']);
+  }
+
+  navigateToListarFestas(): void {
+    this.router.navigate(['/listarFestas'])
+  }
+
+  navigateToMinhasFestas(): void {
+    this.router.navigate(['/lobby'])
   }
 }

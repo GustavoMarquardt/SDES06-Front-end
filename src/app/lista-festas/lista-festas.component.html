@@ -1,0 +1,34 @@
+<nav class="navbar">
+    <ul>
+        <li><button class="nav-button" (click)="navigateToCadastroFesta()">Cadastrar Festas</button></li>
+        <li><button class="nav-button" (click)="navigateToEdit()">Editar Profile</button></li>
+        <li><button class="nav-button" (click)="navigateToListarFestas()">Festas</button></li>
+        <li><button class="nav-button" (click)="navigateToMinhasFestas()">Minhas Festas</button></li>
+    </ul>
+</nav>
+
+<!-- Contêiner de Festas -->
+<div class="festas-container">
+    <div *ngFor="let festa of festas" class="festa-card">
+        <img [src]="festa.imagem_festa" alt="Imagem da Festa" class="festa-imagem" />
+        <div class="festa-info">
+            <h2 class="festa-nome">{{ festa.nome_da_festa }}</h2>
+            <p class="festa-localizacao">{{ festa.localizacao }}</p>
+            <p class="festa-data">{{ festa.data_e_hora | date: 'short' }}</p>
+            <p class="festa-capacidade">Capacidade: {{ festa.capacidade }} pessoas</p>
+            <p class="festa-categoria">Categoria: {{ festa.categoria }}</p>
+            <p class="festa-descricao">{{ festa.descricao }}</p>
+
+            <!-- Botões para "Avaliações" e "Avaliar" -->
+            <button (click)="openDialog(festa.id, 'avaliacoes')">Avaliações</button>
+            <button (click)="navigateToAvaliarFesta(festa.id)">Avaliar</button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isDialogOpen" class="modal">
+    <div class="modal-content">
+        <span class="close" (click)="closeDialog()">&times;</span>
+        <h2 class="modal-title">Avaliações da Festa</h2>
+    </div>
+</div>

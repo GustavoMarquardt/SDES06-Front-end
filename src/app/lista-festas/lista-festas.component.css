@@ -1,0 +1,330 @@
+.festas-container {
+    display: flex;
+    flex-wrap: wrap;  /* Permite que os itens "quebrem" para a próxima linha quando não há espaço */
+    gap: 20px;  /* Espaço entre os itens */
+    justify-content: center;  /* Centraliza os itens */
+    padding: 20px;
+  }
+  
+  .festa-card {
+    width: 250px;  /* Define a largura dos cards */
+    padding: 10px;
+    border: 1px solid #ddd;  /* Borda simples para os cards */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Sombras para dar profundidade */
+    text-align: center;  /* Centraliza o texto */
+    transition: transform 0.3s ease;
+  }
+  
+  .festa-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .festa-imagem {
+    width: 100%;
+    height: 150px;  /* Altura da imagem */
+    object-fit: cover;  /* Faz a imagem preencher o espaço de forma proporcional */
+    border-radius: 8px;
+  }
+  
+  .festa-info {
+    padding: 10px;
+  }
+  
+  .festa-nome {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .festa-localizacao, .festa-data, .festa-capacidade, .festa-categoria, .festa-descricao {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .festa-data {
+    font-style: italic;
+    color: #777;
+  }
+  
+  .festa-capacidade {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Estilo responsivo para diferentes tamanhos de tela */
+  
+  @media (max-width: 768px) {
+    .festa-card {
+      width: 45%;  /* Exibe 2 itens por linha em telas pequenas */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .festa-card {
+      width: 100%;  /* Exibe 1 item por linha em telas muito pequenas */
+    }
+  }
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@400;600&display=swap');
+
+.navbar {
+  background-color: #2e8b57; /* Verde mais escuro */
+  color: white;
+  padding: 10px;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar ul li {
+  display: inline;
+}
+
+.navbar ul li a {
+  color: white;
+  text-decoration: none; /* Remove o sublinhado */
+  padding: 8px 16px;
+}
+
+.navbar ul li a:hover {
+  background-color: #3cb371; /* Verde mais claro no hover */
+  border-radius: 4px;
+}
+
+/* Estilos para todos os botões */
+button {
+  background: none; /* Remove o fundo do botão */
+  border: none; /* Remove a borda do botão */
+  color: #ffffff; /* Cor branca para o texto */
+  font-size: 16px; /* Tamanho da fonte */
+  font-family: Arial, sans-serif; /* Fonte limpa */
+  cursor: pointer; /* Adiciona o cursor de "mãozinha" ao passar o mouse */
+  padding: 8px 16px; /* Padding padrão */
+  text-decoration: none; /* Remove o sublinhado */
+  text-align: center; /* Alinha o texto ao centro */
+  border-radius: 4px; /* Bordas arredondadas */
+  transition: background-color 0.3s, color 0.3s; /* Transições suaves para o hover */
+}
+
+button:hover {
+  background-color: #3cb371; /* Verde mais claro no hover */
+  color: #f0f0f0; /* Cor do texto no hover */
+}
+
+button:focus {
+  outline: none; /* Remove o contorno de foco */
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5); /* Leve sombra no foco */
+}
+
+button:active {
+  transform: scale(0.98); /* Efeito de clique, reduzindo ligeiramente o botão */
+}
+
+/* Estilo para o botão "Editar" */
+button.mat-button:nth-child(1) {
+  background-color: #4CAF50; /* Verde para "Editar" */
+}
+
+button.mat-button:nth-child(1):hover {
+  background-color: #388E3C; /* Verde mais escuro no hover */
+}
+
+/* Estilo para o botão "Excluir" */
+button.mat-button:nth-child(2) {
+  background-color: #F44336; /* Vermelho para "Excluir" */
+}
+
+button.mat-button:nth-child(2):hover {
+  background-color: #D32F2F; /* Vermelho mais escuro no hover */
+}
+
+/* Estilos para a navbar */
+.navbar ul li a,
+.nav-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-align: left;
+}
+
+.nav-button:hover,
+.navbar ul li a:hover {
+  background-color: #3cb371;
+  border-radius: 4px;
+}
+
+
+/* Modal Styles */
+.modal {
+    display: block; /* Exibe o modal */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Cor de fundo com transparência */
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Navbar */
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+  }
+  
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navbar .nav-button {
+    background-color: #444;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .navbar .nav-button:hover {
+    background-color: #555;
+  }
+  
+  /* Festa Card */
+  .festas-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px 0;
+  }
+  
+  .festa-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 300px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .festa-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .festa-imagem {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .festa-info h2 {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  /* Modal */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal-content {
+    background: #fff;
+    border-radius: 10px;
+    width: 600px;
+    padding: 20px;
+    position: relative;
+  }
+  
+  .modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .modal-title {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  
+  /* Avaliações */
+  .avaliacao-container {
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .avaliacao-id {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .avaliacao-stars {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .avaliacao-stars label {
+    font-weight: bold;
+  }
+  
+  .avaliacao-stars span {
+    color: #ffc107;
+    font-size: 18px;
+  }
+  
+  

@@ -16,6 +16,7 @@ export class ConfirmacaoDialogComponent {
 
   // Método para fechar o diálogo com o valor 'confirmado'
   onConfirmar(): void {
+    window.location.reload();
     this.dialogRef.close('confirmado');
   }
 

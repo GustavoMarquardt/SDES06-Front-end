@@ -50,6 +50,7 @@ export class CadastrarUsuarioComponent {
     this.http.post('http://localhost:3000/api/festas/usuario/cadastrarUsuario', usuario, { headers })
     .subscribe({
       next: (res) => {
+        window.alert("Cadastro realizado com sucesso!")
         this.router.navigate(['/login']); // Redireciona para a página de cadastro
       },
       error: (error: HttpErrorResponse) => {

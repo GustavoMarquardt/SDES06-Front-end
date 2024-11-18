@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 
 <div class="cadastro-container">
     <h2>Cadastrar Usuário</h2>
@@ -52,3 +53,42 @@
     </form>
   </div>
   
+=======
+<div class="bg-default">
+  <div class="div-default">
+      <h2 class="title-default">Cadastrar Usuário</h2>
+      <form (ngSubmit)="cadastrar()">
+          <label for="nome_completo">Nome Completo</label>
+          <input class="input-default" type="text" id="nome_completo" [(ngModel)]="nome_completo" name="nome_completo" required />
+    
+          <label for="email">E-mail</label>
+          <input class="input-default" type="email" id="email" [(ngModel)]="email" name="email" required />
+    
+          <label for="senha">Senha</label>
+          <input class="input-default" type="password" id="senha" [(ngModel)]="senha" name="senha" required />
+
+          <label for="data_nascimento">Data de Nascimento</label>
+          <input class="input-default" type="date" id="data_nascimento" [(ngModel)]="data_nascimento" name="data_nascimento" required />
+
+          <label for="idade">Idade</label>
+          <input class="input-default" type="number" id="idade" [(ngModel)]="idade" name="idade" required />
+    
+          <label for="endereco">Endereço</label>
+          <input class="input-default" type="text" id="endereco" [(ngModel)]="endereco" name="endereco" required />
+    
+          <label for="login_academico">Login Acadêmico</label>
+          <input class="input-default" type="text" id="login_academico" [(ngModel)]="login_academico" name="login_academico" required />
+    
+          <label for="rede_social">Rede Social</label>
+          <input class="input-default" type="text" id="rede_social" [(ngModel)]="rede_social" name="rede_social" required />
+    
+        <div *ngIf="errorMessage" class="error">
+          {{ errorMessage }}
+        </div>
+        
+        <div></div>
+        <button type="submit" class="button-default" id="enviar">Cadastrar</button>
+      </form>
+    </div>
+</div>
+>>>>>>> 5ccc3a700c73be4aec669510c023024ac4ce14b9

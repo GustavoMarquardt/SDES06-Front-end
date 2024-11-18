@@ -70,6 +70,7 @@ button.mat-button:nth-child(1):hover {
 /* Estilo para o botão "Excluir" */
 button.mat-button:nth-child(2) {
   background-color: #F44336; /* Vermelho para "Excluir" */
+  color: white;
 }
 
 button.mat-button:nth-child(2):hover {

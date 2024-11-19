@@ -69,7 +69,6 @@ export class CadastrarUsuarioComponent {
   }
 
   navigateToEdit(): void {
-    console.log('BORAAAA');
     this.router.navigate(['/editarPerfil']);
   }
 
@@ -79,5 +78,10 @@ export class CadastrarUsuarioComponent {
 
   navigateToMinhasFestas(): void {
     this.router.navigate(['/lobby'])
+  }
+
+  navigateToLogin() {
+    console.log('navegando para tela de login');
+    this.router.navigate(['/']); // Redireciona para a página de login
   }
 }

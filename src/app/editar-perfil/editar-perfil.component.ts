@@ -82,4 +82,20 @@ export class EditarPerfilComponent implements OnInit {
       this.errorMessage = 'Por favor, preencha todos os campos obrigatórios.';
     }
   }
+
+  navigateToCadastroFesta(): void {
+    this.router.navigate(['/cadastrarFesta']);
+  }
+
+  navigateToLogout(): void {
+    this.router.navigate(['/']);
+  }
+
+  navigateToEdit():void{
+    this.router.navigate(['/editarPerfil']);
+  }
+
+  navigateToFestas(): void {
+    this.router.navigate(['/lobby'])
+  }
 }

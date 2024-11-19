@@ -1,62 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@400;600&display=swap');
 
-.navbar {
-  background-color: #2e8b57; /* Verde mais escuro */
-  color: white;
-  padding: 10px;
-}
-
-.navbar ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: space-around;
-}
-
-.navbar ul li {
-  display: inline;
-}
-
-.navbar ul li a {
-  color: white;
-  text-decoration: none; /* Remove o sublinhado */
-  padding: 8px 16px;
-}
-
-.navbar ul li a:hover {
-  background-color: #3cb371; /* Verde mais claro no hover */
-  border-radius: 4px;
-}
-
 /* Estilos para todos os botões */
-button {
-  background: none; /* Remove o fundo do botão */
-  border: none; /* Remove a borda do botão */
-  color: #ffffff; /* Cor branca para o texto */
-  font-size: 16px; /* Tamanho da fonte */
-  font-family: Arial, sans-serif; /* Fonte limpa */
-  cursor: pointer; /* Adiciona o cursor de "mãozinha" ao passar o mouse */
-  padding: 8px 16px; /* Padding padrão */
-  text-decoration: none; /* Remove o sublinhado */
-  text-align: center; /* Alinha o texto ao centro */
-  border-radius: 4px; /* Bordas arredondadas */
-  transition: background-color 0.3s, color 0.3s; /* Transições suaves para o hover */
-}
-
-button:hover {
-  background-color: #3cb371; /* Verde mais claro no hover */
-  color: #f0f0f0; /* Cor do texto no hover */
-}
-
-button:focus {
-  outline: none; /* Remove o contorno de foco */
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5); /* Leve sombra no foco */
-}
-
-button:active {
-  transform: scale(0.98); /* Efeito de clique, reduzindo ligeiramente o botão */
-}
 
 /* Estilo para o botão "Editar" */
 button.mat-button:nth-child(1) {
@@ -78,21 +22,4 @@ button.mat-button:nth-child(2):hover {
 }
 
 /* Estilos para a navbar */
-.navbar ul li a,
-.nav-button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 16px;
-  font-family: Arial, sans-serif;
-  cursor: pointer;
-  padding: 8px 16px;
-  text-decoration: none;
-  text-align: left;
-}
 
-.nav-button:hover,
-.navbar ul li a:hover {
-  background-color: #3cb371;
-  border-radius: 4px;
-}

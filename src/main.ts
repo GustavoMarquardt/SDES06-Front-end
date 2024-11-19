@@ -18,7 +18,7 @@ const routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'cadastrarUsuario', component: CadastrarUsuarioComponent },
-  { path: 'lobby', component: LobbyComponent },
+  { path: 'lobby', component: ListaFestasComponent },
   { path: 'cadastrarFesta', component: CadastroFestaComponent },
   { path: 'editarPerfil', component: EditarPerfilComponent },
   { path: 'listarFestas', component: ListaFestasComponent },

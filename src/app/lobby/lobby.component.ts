@@ -101,11 +101,7 @@ export class LobbyComponent {
   excluirFesta(festaId: number): void {
     this.festasService.excluirFesta(festaId).subscribe({
       next: () => {
-<<<<<<< HEAD
-        this.getFestas();
-=======
         this.getFestas(); // Atualiza a lista de festas após a exclusão
->>>>>>> 5ccc3a700c73be4aec669510c023024ac4ce14b9
       },
       error: (error) => {
         console.error(error);
@@ -130,16 +126,11 @@ export class LobbyComponent {
     this.router.navigate(['/cadastrarFesta']);
   }
 
-<<<<<<< HEAD
-  navigateToEdit(): void {
-    console.log('BORAAAA');
-=======
   navigateToLogout(): void {
     this.router.navigate(['/']);
   }
 
   navigateToEdit():void{
->>>>>>> 5ccc3a700c73be4aec669510c023024ac4ce14b9
     this.router.navigate(['/editarPerfil']);
   }
 

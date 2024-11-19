@@ -1,16 +1,190 @@
+.login,
+.login * {
+  box-sizing: border-box;
+}
+.login {
+  background: #161616;
+  height: 1024px;
+  position: relative;
+  overflow: hidden;
+}
+body {
+  margin: 0;
+  position: relative;
+  height: 100vh; /* Altura total da viewport */
+  background: #000;
+}
 
+.rectangle-1 {
+  background: #161616;
+  border-radius: 21px;
+  border-style: solid;
+  border-color: #686868;
+  border-width: 1px;
+  width: 420px;
+  height: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-  .error-message {
-    color: red;
-    margin-top: 10px;
-    text-align: center;
-  }
+.rectangle-2 {
+  background: #282828;
+  border-radius: 4px;
+  width: 364px;
+  height: 33px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.rectangle-3 {
+  background: #282828;
+  border-radius: 4px;
+  width: 364px;
+  height: 33px;
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.group-1 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-4 {
+  background: #531b98;
+  border-radius: 4px;
+  width: 133.72px;
+  height: 33px;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.entrar {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: absolute;
+  left: 697.33px;
+  top: 502px;
+  width: 45.79px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.e-mail {
+  color: #909090;
+  text-align: left;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: absolute;
+  top: 37%;
+  left: 41%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.senha {
+  color: #909090;
+  text-align: left;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: absolute;
+  top: 44%;
+  left: 41%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.avalia-10 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "LobsterTwo-Regular", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  position: absolute;
+  left: 654px;
+  top: 726px;
+}
+.insira-seu-endere-o-de-e-mail {
+  color: #909090;
+  text-align: center;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  left: 540px;
+  top: 377px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.insira-sua-senha {
+  color: #909090;
+  text-align: center;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  left: 540px;
+  top: 440px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.n-o-possui-uma-conta-cadastre-se {
+  text-align: center;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  top: 68%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.n-o-possui-uma-conta-cadastre-se-span {
+  color: #ffffff;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+.n-o-possui-uma-conta-cadastre-se-span2 {
+  color: #531b98;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+.login2 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Arsenal-Bold", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  position: absolute;
+  top: 27%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
 
-  label {
-    font-size: 14px;
-    color: #aaa;
-    margin-top: 0.4rem;
-    display: block;
-    
-  }
-  
+.meioErro {
+  color: #ffffff;
+  position: relative;
+  top: 70%;
+  left: 45%;
+  z-index: 100;
+}

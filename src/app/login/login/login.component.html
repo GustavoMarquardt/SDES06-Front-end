@@ -1,24 +1,29 @@
-<div class="bg-default">
-<div class="div-default">
-    <h2 class="title-default">Login</h2>
-    
-    <form (ngSubmit)="login()">
-      <label for="email" class="text-white">Email:</label>
-      <input class="input-default" type="email" id="email" [(ngModel)]="email" name="email" required />
+<div class="login">
+  <div class="rectangle-1"></div>
   
-      <label for="senha">Senha:</label>
-      <input class="input-default" type="password" id="senha" [(ngModel)]="senha" name="senha" required />
-      
-      <div class="pt-6 flex space-x-6">
-        <button class="button-default" type="submit">Login</button>
-        <button class="button-default" type="button" (click)="navigateToRegister()">Cadastrar</button>
-      </div>
-  
-      <!-- Exibição da mensagem de erro -->
-      <div *ngIf="errorMessage" class="error-message">
-        <p>{{ errorMessage }}</p>
-      </div>
-    </form>
+  <form (ngSubmit)="login()">
+  <div class="e-mail">E-mail</div>
+  <div class="senha">Senha</div>
+  <input class="rectangle-2" type="email" id="email" [(ngModel)]="email" name="email" required placeholder="Insira seu E-mail" />
+  <input class="rectangle-3" type="password" id="senha" [(ngModel)]="senha" name="senha" required placeholder="Insira sua senha"/>
+  <div class="n-o-possui-uma-conta-cadastre-se">
+    <span class="meio">
+      <span class="n-o-possui-uma-conta-cadastre-se-span">
+        Não possui uma conta?
+      </span>
+      <button class="n-o-possui-uma-conta-cadastre-se-span2" type="button" (click)="navigateToRegister()">Cadastre-se</button>
+    </span>
   </div>
-</div>
+
+  <div>
+    <button class="rectangle-4" type="submit">Entrar</button>
+  </div>
+  <div *ngIf="errorMessage" class="error-message meioErro">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <div class="login2">Login</div>
+
   
+</form>
+</div>

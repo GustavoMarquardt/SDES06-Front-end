@@ -1,58 +1,384 @@
-/* Resetando margens e padding para um layout consistente */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  .cadastro-container {
-    background-color: #ffffff;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  div {
-    margin-bottom: 1.2rem;
-  }
-  
-  label {
-    font-size: 14px;
-    color: #aaa;
-    margin-top: 0.4rem;
-    display: block;
-  }
-
-  h2{
-    font-size: 30px;
-
-  }
-  
-  .error {
-    color: #e74c3c;
-    font-size: 14px;
-    margin-top: 1rem;
-    text-align: center;
-  }
-  
-  /* Estilo para telas menores */
-  @media (max-width: 480px) {
-    .cadastro-container {
-      padding: 1.5rem;
-      width: 100%;
-      max-width: 100%;
-    }
-
-    input, button {
-      font-size: 14px;
-      padding: 8px;
-    }
-  }
-  
+.registrar,
+.registrar * {
+  box-sizing: border-box;
+}
+.registrar {
+  background: #161616;
+  height: 1024px;
+  position: relative;
+  overflow: hidden;
+}
+.rectangle-1 {
+  background: #161616;
+  border-radius: 21px;
+  border-style: solid;
+  border-color: #686868;
+  border-width: 1px;
+  width: 420px;
+  height: 800px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.rectangle-2 {
+  background: #282828;
+  border-radius: 4px;
+  width: 364px;
+  height: 33px;
+  position: absolute;
+  top: 33%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.rectangle-5 {
+  background: #282828;
+  border-radius: 4px;
+  width: 364px;
+  height: 33px;
+  position: absolute;
+  top: 27%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.rectangle-3 {
+  background: #282828;
+  border-radius: 4px;
+  width: 364px;
+  height: 33px;
+  position: absolute;
+  top: 39%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.rectangle-4 {
+  background: #282828;
+  border-radius: 4px;
+  width: 364px;
+  height: 33px;
+  position: absolute;
+  left: 539px;
+  top: 447px;
+}
+.rectangle-6 {
+  background: #282828;
+  border-radius: 4px;
+  width: 364px;
+  height: 33px;
+  position: absolute;
+  left: 539px;
+  top: 510px;
+}
+.rectangle-7 {
+  background: #282828;
+  border-radius: 4px;
+  width: 364px;
+  height: 33px;
+  position: absolute;
+  left: 539px;
+  top: 573px;
+}
+.rectangle-8 {
+  background: #282828;
+  border-radius: 4px;
+  width: 364px;
+  height: 33px;
+  position: absolute;
+  left: 539px;
+  top: 636px;
+}
+.rectangle-9 {
+  background: #282828;
+  border-radius: 4px;
+  width: 364px;
+  height: 33px;
+  position: absolute;
+  left: 539px;
+  top: 699px;
+}
+.group-1 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-42 {
+  background: #531b98;
+  border-radius: 4px;
+  width: 133.72px;
+  height: 33px;
+  position: absolute;
+  left: 654px;
+  top: 755px;
+}
+.cadastrar {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: absolute;
+  left: 686px;
+  top: 761px;
+  width: 69px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.e-mail {
+  color: #909090;
+  text-align: left;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: absolute;
+  top: 30%;
+  left: 41.3%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.nome-completo {
+  color: #909090;
+  text-align: left;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: absolute;
+  top: 24%;
+  left: 43%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.senha {
+  color: #909090;
+  text-align: left;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: absolute;
+  top: 36%;
+  left: 41.3%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.data-de-nascimento {
+  color: #909090;
+  text-align: left;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: absolute;
+  left: 539px;
+  top: 425px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.idade {
+  color: #909090;
+  text-align: left;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: absolute;
+  left: 539px;
+  top: 488px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.endere-o {
+  color: #909090;
+  text-align: left;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: absolute;
+  left: 539px;
+  top: 551px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.login-acad-mico {
+  color: #909090;
+  text-align: left;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: absolute;
+  left: 539px;
+  top: 614px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.rede-social {
+  color: #909090;
+  text-align: left;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: absolute;
+  left: 539px;
+  top: 677px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.avalia-10 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "LobsterTwo-Regular", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  position: absolute;
+  left: 654px;
+  top: 826px;
+}
+.insira-seu-endere-o-de-e-mail {
+  color: #909090;
+  text-align: center;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  left: 552px;
+  top: 328px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.insira-seu-nome-completo {
+  color: #909090;
+  text-align: center;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  left: 552px;
+  top: 265px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.insira-sua-senha {
+  color: #909090;
+  text-align: center;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  left: 552px;
+  top: 391px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.dd-mm-aaaa {
+  color: #909090;
+  text-align: center;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  left: 552px;
+  top: 455px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+._0 {
+  color: #909090;
+  text-align: center;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  left: 552px;
+  top: 518px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+._02 {
+  color: #909090;
+  text-align: center;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  left: 552px;
+  top: 581px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+._03 {
+  color: #909090;
+  text-align: center;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  left: 552px;
+  top: 644px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+._04 {
+  color: #909090;
+  text-align: center;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  left: 552px;
+  top: 707px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.j-possui-uma-conta-fa-a-login {
+  text-align: center;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  left: 632px;
+  top: 807px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.j-possui-uma-conta-fa-a-login-span {
+  color: #ffffff;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+.j-possui-uma-conta-fa-a-login-span2 {
+  color: #531b98;
+  font-family: "Mina-Regular", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+.registrar2 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Arsenal-Bold", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  position: absolute;
+  top: 17%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}

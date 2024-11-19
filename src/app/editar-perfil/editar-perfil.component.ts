@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   standalone: true, // Definindo o componente como standalone
   imports: [CommonModule, FormsModule], // Importando os módulos necessários
 })
+
 export class EditarPerfilComponent implements OnInit {
   nome_completo: string = '';
   senha: string = '';

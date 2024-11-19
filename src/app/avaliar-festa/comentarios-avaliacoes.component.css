@@ -1,0 +1,12 @@
+/* Centralizando a div do formulário */
+label{
+  color:#6b6b6b;
+  margin-top: 10px;
+}
+
+
+  form .error {
+    color: red;
+    margin-top: 10px;
+  }
+  

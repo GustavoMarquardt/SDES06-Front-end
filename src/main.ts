@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { EditarPerfilComponent } from './app/editar-perfil/editar-perfil.component';
 import { ListaFestasComponent } from './app/lista-festas/lista-festas.component'
-import { ComentariosAvaliacoesComponent } from './app/comentarios-avaliacoes/comentarios-avaliacoes.component';
+import { ComentariosAvaliacoesComponent } from './app/avaliar-festa/comentarios-avaliacoes.component';
 
 // Definindo as rotas
 const routes = [

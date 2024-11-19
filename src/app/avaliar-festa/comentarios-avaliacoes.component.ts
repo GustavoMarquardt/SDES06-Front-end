@@ -2,6 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {AvaliacoesService} from '../services/avalicao.service'
+import { Router } from '@angular/router';
+import { ChangeDetectorRef, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+
+
 @Component({
   selector: 'app-comentarios-avaliacoes',
   standalone: true,
@@ -17,6 +23,8 @@ export class ComentariosAvaliacoesComponent {
   localizacao: number = 0;
   preco: number = 0;
   comentario: string = '';
+
+  constructor(private http: HttpClient, private cdr: ChangeDetectorRef,     private router: Router) {}
 
   // Definindo explicitamente o tipo de 'field' que será usado no método
   setRating(field: 'organizacao' | 'qualidade_musica' | 'bar' | 'atendimento' | 'localizacao' | 'preco', rating: number) {
@@ -36,5 +44,9 @@ export class ComentariosAvaliacoesComponent {
       comentario:  this.comentario
     });
     
+  }
+
+  navigateToFestas(): void {
+    this.router.navigate(['/lobby'])
   }
 }

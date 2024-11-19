@@ -1,32 +1,4 @@
-.festas-container {
-    display: flex;
-    flex-wrap: wrap;  /* Permite que os itens "quebrem" para a próxima linha quando não há espaço */
-    gap: 20px;  /* Espaço entre os itens */
-    justify-content: center;  /* Centraliza os itens */
-    padding: 20px;
-  }
-  
-  .festa-card {
-    width: 250px;  /* Define a largura dos cards */
-    padding: 10px;
-    border: 1px solid #ddd;  /* Borda simples para os cards */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Sombras para dar profundidade */
-    text-align: center;  /* Centraliza o texto */
-    transition: transform 0.3s ease;
-  }
-  
-  .festa-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .festa-imagem {
-    width: 100%;
-    height: 150px;  /* Altura da imagem */
-    object-fit: cover;  /* Faz a imagem preencher o espaço de forma proporcional */
-    border-radius: 8px;
-  }
-  
+
   /* Estilo responsivo para diferentes tamanhos de tela */
   
   @media (max-width: 768px) {

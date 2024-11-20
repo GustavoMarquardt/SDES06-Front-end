@@ -10,8 +10,8 @@ import { Component, importProvidersFrom } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { EditarPerfilComponent } from './app/editar-perfil/editar-perfil.component';
-import { ListaFestasComponent } from './app/lista-festas/lista-festas.component'
-import { ComentariosAvaliacoesComponent } from './app/avaliar-festa/comentarios-avaliacoes.component';
+import { ListaFestasComponent } from './app/lista-festas/lista-festas.component';
+import { ComentariosAvaliacoesComponent } from './app/comentarios-avalicoes/comentarios-avaliacoes.component';
 
 // Definindo as rotas
 const routes = [
@@ -22,7 +22,7 @@ const routes = [
   { path: 'cadastrarFesta', component: CadastroFestaComponent },
   { path: 'editarPerfil', component: EditarPerfilComponent },
   { path: 'listarFestas', component: ListaFestasComponent },
-  { path: 'avaliar/:festaId', component: ComentariosAvaliacoesComponent },
+  { path: 'avaliar/:festaId/:criadorId', component: ComentariosAvaliacoesComponent },
 ];
 
 // Inicializando a aplicação com o AppComponent

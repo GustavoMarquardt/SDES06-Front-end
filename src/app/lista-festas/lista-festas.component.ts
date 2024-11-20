@@ -14,17 +14,15 @@ import { AvaliacoesService } from '../services/avalicao.service';
 @Component({
   selector: 'app-lista-festas',
   standalone: true,
-  imports: [
-    CommonModule, MatTableModule, MatCardModule, MatIconModule
-  ],
+  imports: [CommonModule, MatTableModule, MatCardModule, MatIconModule],
   templateUrl: './lista-festas.component.html',
-  styleUrls: ['./lista-festas.component.css']
+  styleUrls: ['./lista-festas.component.css'],
 })
 export class ListaFestasComponent {
   festas: FestaResponse[] = [];
   avaliacoes: AvalicaoResponse[] = []; // Dados das avaliações
   selectedFestaId: string | null = null;
-  showAvaliarForm: boolean = false;  // Controle para exibir o formulário de avaliação
+  showAvaliarForm: boolean = false; // Controle para exibir o formulário de avaliação
   errorMessage: string = '';
 
   constructor(
@@ -33,7 +31,9 @@ export class ListaFestasComponent {
     private http: HttpClient,
     private avaliacoesService: AvaliacoesService,
     private cdRef: ChangeDetectorRef
-  ) { }
+  ) {
+    
+  }
 
   ngOnInit(): void {
     // Carrega as festas
@@ -64,7 +64,7 @@ export class ListaFestasComponent {
   openAvaliarDialog(festaId: string) {
     console.log('Abrindo formulário de avaliação para a festa:', festaId);
     this.selectedFestaId = festaId;
-    this.showAvaliarForm = true;  // Exibe o formulário
+    this.showAvaliarForm = true; // Exibe o formulário
 
     // Carrega as avaliações para a festa selecionada
     this.loadAvaliacoes(festaId);
@@ -79,28 +79,28 @@ export class ListaFestasComponent {
       },
       error: (err) => {
         console.error('Erro ao carregar as avaliações:', err);
-      }
+      },
     });
   }
 
   // Função para converter o buffer de imagem em Blob
   convertBufferToBlob(buffer: any): Blob {
-    const byteArray = new Uint8Array(buffer.data);  // Converte o Buffer para um Array de bytes
-    return new Blob([byteArray], { type: 'image/jpeg' });  // Cria o Blob
+    const byteArray = new Uint8Array(buffer.data); // Converte o Buffer para um Array de bytes
+    return new Blob([byteArray], { type: 'image/jpeg' }); // Cria o Blob
   }
 
   // Função para fechar o formulário de avaliação
   closeAvaliarForm() {
-    this.showAvaliarForm = false;  // Fecha o formulário
+    this.showAvaliarForm = false; // Fecha o formulário
     this.selectedFestaId = null;
-    this.avaliacoes = [];  // Limpa as avaliações
+    this.avaliacoes = []; // Limpa as avaliações
   }
 
   // Função para gerar as estrelas de avaliação
   generateStars(rating: number): string {
-    const totalStars = 5;  // Número total de estrelas
-    const fullStars = '★'.repeat(rating);  // Estrelas preenchidas
-    const emptyStars = '☆'.repeat(totalStars - rating);  // Estrelas vazias
+    const totalStars = 5; // Número total de estrelas
+    const fullStars = '★'.repeat(rating); // Estrelas preenchidas
+    const emptyStars = '☆'.repeat(totalStars - rating); // Estrelas vazias
     return fullStars + emptyStars;
   }
 
@@ -121,8 +121,10 @@ export class ListaFestasComponent {
     this.router.navigate(['/lobby']);
   }
 
-// Dentro de ListaFestasComponent
-navigateToAvaliarFesta(festaId: string): void {
-  this.router.navigate([`avaliar/${festaId}`]);  // Navega para a rota de avaliação com o festaId
-}
+  // Dentro de ListaFestasComponent
+  navigateToAvaliarFesta(festaId: string): void {
+    const userId = sessionStorage.getItem('userId');
+    console.log('opssss',userId);
+    this.router.navigate([`avaliar/${festaId}/${userId}`]);
+  }
 }

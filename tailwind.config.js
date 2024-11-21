@@ -11,7 +11,8 @@ module.exports = {
     "./src/app/editar-festa-dialog/editar-festa-dialog.component.html",
     "./src/app/lista-festas/lista-festas.component.html",
     "./src/app/comentarios-avaliacoes/comentarios-avaliacoes.component.html",
-    "./src/**/*.{html,js}"
+    "./src/app/lista-avaliacoes/lista-avaliacoes.component.html",
+    "./src/**/*.{html,js}",
     
   ],
   theme: {

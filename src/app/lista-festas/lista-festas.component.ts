@@ -127,4 +127,14 @@ export class ListaFestasComponent {
     console.log('opssss',userId);
     this.router.navigate([`avaliar/${festaId}/${userId}`]);
   }
+
+  navigateToAvaliacoesFesta(festaId: string): void {
+    const userId = sessionStorage.getItem('userId');
+    console.log('opssss',userId);
+    this.router.navigate([`avaliacoes/${festaId}/${userId}`]);
+  }
+  
+  navigateToFestas(): void {
+    this.router.navigate(['/lobby']);
+  }
 }

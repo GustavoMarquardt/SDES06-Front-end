@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AvalicaoInterface, AvalicaoResponse } from '../../interfaces/AvaliacaoInterface'; // Importe as interfaces aqui
 
@@ -23,10 +23,18 @@ export class AvaliacoesService {
   }
 
   // Método para criar uma nova avaliação
-  criarAvaliacao(avaliacao: AvalicaoInterface): Observable<AvalicaoResponse> {
-    console.log('GUSTAVO É MUITO TESUDO', avaliacao);
-    return this.http.post<AvalicaoResponse>(`${this.apiUrl}/avaliacoes`, avaliacao);
+  criarAvaliacao(avaliacao: AvalicaoInterface): void {
+    this.http.post<AvalicaoResponse>('http://localhost:3000/api/festas/avaliacoes', avaliacao)
+      .subscribe({
+        next: (response) => {
+          console.log('Resposta do backend:', response);
+        },
+        error: (err) => {
+          console.error('Erro na requisição:', err);
+        }
+      });
   }
+  
 
   // Método para atualizar uma avaliação pelo ID
   atualizarAvaliacao(avaliacao: AvalicaoInterface): Observable<AvalicaoResponse> {

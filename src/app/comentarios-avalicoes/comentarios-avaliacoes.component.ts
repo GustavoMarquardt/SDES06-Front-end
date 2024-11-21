@@ -25,6 +25,7 @@ export class ComentariosAvaliacoesComponent {
   festaId: string = '';
   criadorFestaId: string = '';
 
+
   constructor(
     private http: HttpClient,
     private cdr: ChangeDetectorRef,
@@ -89,6 +90,7 @@ export class ComentariosAvaliacoesComponent {
       atendimento: this.atendimento,
       localizcao: this.localizacao,
       preco: this.preco,
+      comentario: this.comentario,
     };
 
     this.avaliacaoService.criarAvaliacao(avaliacao);

@@ -8,11 +8,12 @@ export interface AvalicaoInterface {
     bar: number;
     atendimento: number;
     localizcao: number;
-    preco: number
+    preco: number;
+    comentario: string
 }
 
 export interface AvalicaoResponse {
     id: number; // Adicione esta linha se o ID está presente
-    status: number;
-    festas: AvalicaoInterface[];
+    mensagem: String;
+    avaliacao: AvalicaoInterface[];
 }

@@ -38,11 +38,11 @@ export class AvaliacoesService {
 
   // Método para atualizar uma avaliação pelo ID
   atualizarAvaliacao(avaliacao: AvalicaoInterface): Observable<AvalicaoResponse> {
-    return this.http.put<AvalicaoResponse>(`${this.apiUrl}/atualizarAvaliacao/${avaliacao.id}`, avaliacao);
+    return this.http.put<AvalicaoResponse>(`http://localhost:3000/api/festas/avaliacoes`, avaliacao);
   }
 
   // Método para excluir uma avaliação pelo ID
   excluirAvaliacao(avaliacaoId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/excluirAvaliacao/${avaliacaoId}`);
+    return this.http.delete<void>(`http://localhost:3000/api/festas/avaliacoes`);
   }
 }

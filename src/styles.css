@@ -3,6 +3,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -15,12 +16,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 @layer components {
   .button-default {
-    @apply bg-cyan-950 hover:bg-cyan-400 
+    @apply bg-violet-700 hover:bg-violet-400
            text-white hover:text-black
            duration-200 ease-in-out
            rounded
            w-fit h-fit
-           border-4 border-cyan-950 hover:border-cyan-400
+           border-4 border-violet-700 hover:border-violet-400
 
   }
 
@@ -33,15 +34,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
 
   .div-default{
-    @apply bg-neutral-800
+    @apply bg-neutral-900
              flex flex-col
              content-center justify-center justify-self-center self-center
-             border-8 border-neutral-800
-             rounded
+             border-2 border-neutral-700
+             rounded-2xl
              h-fit
-             w-3/12
+             w-96
              p-4
-             shadow-neutral-600
   }
 
   .title-default{
@@ -49,11 +49,27 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
   
   .input-default{
-    @apply bg-neutral-700  focus:bg-cyan-900
-             w-9/12
+    @apply bg-neutral-700  focus:bg-neutral-600
+             w-full
              flex
+             px-1
              border-2 border-neutral-700
              rounded
              text-white
+  }
+
+  .button-lobby{
+    @apply text-neutral-400 border border-transparent my-1 py-0.5 
+          hover:border-b-violet-700 hover:border hover:scale-105
+            mx-10
+            duration-200 ease-in-out
+  }
+
+  .nav-default{
+    @apply flex flex-row
+    border-b border-b-violet-500
+    space-x-10
+    justify-center content-center
+    py-2
   }
 }

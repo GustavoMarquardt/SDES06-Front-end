@@ -24,7 +24,8 @@ export class AvaliacoesService {
 
   // Método para criar uma nova avaliação
   criarAvaliacao(avaliacao: AvalicaoInterface): Observable<AvalicaoResponse> {
-    return this.http.post<AvalicaoResponse>(`${this.apiUrl}/criarAvaliacao`, avaliacao);
+    console.log('GUSTAVO É MUITO TESUDO', avaliacao);
+    return this.http.post<AvalicaoResponse>(`${this.apiUrl}/avaliacoes`, avaliacao);
   }
 
   // Método para atualizar uma avaliação pelo ID

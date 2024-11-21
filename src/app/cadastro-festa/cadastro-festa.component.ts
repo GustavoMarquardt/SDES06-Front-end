@@ -81,7 +81,6 @@ export class CadastroFestaComponent {
       });
   }
   
-  
   navigateToCadastroFesta(): void {
     this.router.navigate(['/cadastrarFesta']);
   }
@@ -91,11 +90,7 @@ export class CadastroFestaComponent {
     this.router.navigate(['/editarPerfil']);
   }
 
-  navigateToListarFestas(): void {
-    this.router.navigate(['/listarFestas'])
-  }
-
-  navigateToMinhasFestas(): void {
+  navigateToLobby(): void {
     this.router.navigate(['/lobby'])
   }
 }

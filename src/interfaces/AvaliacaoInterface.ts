@@ -4,7 +4,7 @@ export interface AvalicaoInterface {
     id_festa: number;
     organizacao: number;
     qualidade_musica: number;
-    id: number;
+    id?: number;
     bar: number;
     atendimento: number;
     localizcao: number;

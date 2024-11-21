@@ -1,34 +1,38 @@
-<nav class="navbar">
-    <ul>
-        <li><button class="nav-button" (click)="navigateToCadastroFesta()">Cadastrar Festas</button></li>
-        <li><button class="nav-button" (click)="navigateToEdit()">Editar Profile</button></li>
-        <li><button class="nav-button" (click)="navigateToListarFestas()">Festas</button></li>
-        <li><button class="nav-button" (click)="navigateToMinhasFestas()">Minhas Festas</button></li>
-    </ul>
-</nav>
+<div class="bg-default content-normal justify-start grow">
+    <nav class="nav-default">
+      <ul>
+        <button class="button-lobby font-michroma" (click)="navigateToCadastroFesta()">Cadastrar Festas</button>
+        <button class="button-lobby font-michroma text-white font-bold" (click)="navigateToFestas()">Festas</button>
+        <button class="button-lobby font-michroma" (click)="navigateToEdit()">Editar Perfil</button>
+      </ul>
+    </nav>
 
-<!-- Contêiner de Festas -->
-<div class="festas-container">
-    <div *ngFor="let festa of festas" class="festa-card">
-        <img [src]="festa.imagem_festa" alt="Imagem da Festa" class="festa-imagem" />
-        <div class="festa-info">
-            <h2 class="festa-nome">{{ festa.nome_da_festa }}</h2>
-            <p class="festa-localizacao">{{ festa.localizacao }}</p>
-            <p class="festa-data">{{ festa.data_e_hora | date: 'short' }}</p>
-            <p class="festa-capacidade">Capacidade: {{ festa.capacidade }} pessoas</p>
-            <p class="festa-categoria">Categoria: {{ festa.categoria }}</p>
-            <p class="festa-descricao">{{ festa.descricao }}</p>
+    <div class="text-white px-10 font-michroma text-3xl">Festas</div>
 
-            <!-- Botões para "Avaliações" e "Avaliar" -->
-            <button (click)="openDialog(festa.id, 'avaliacoes')">Avaliações</button>
-            <button (click)="navigateToAvaliarFesta(festa.id)">Avaliar</button>
+    <!--  Container  -->
+    <div class="flex shrink flex-row ml-10">
+        
+        <div *ngFor="let festa of festas" class="mr-10 w-2/12 bg-neutral-800 p-4 rounded-xl border border-neutral-400 duration-200 ease-in-out hover:scale-105">
+            <img [src]="festa.imagem_festa" alt="Imagem da Festa" class="festa-imagem" >
+            <div class="festa-info">
+                <h2 class="text-white ">{{ festa.nome_da_festa }}</h2>
+                <p class="text-neutral-400 text-sm">{{ festa.localizacao }}</p>
+                <p class="text-neutral-400 text-sm">{{ festa.data_e_hora | date: 'short' }}</p>
+                <p class="text-neutral-400 text-sm">Capacidade: {{ festa.capacidade }} pessoas</p>
+                <p class="text-neutral-400 text-sm">Categoria: {{ festa.categoria }}</p>
+                <p class="text-neutral-400 text-sm">{{ festa.descricao }}</p>
+
+                <!-- Botões para "Avaliações" e "Avaliar" -->
+                <button class="button-default mx-3" (click)="openDialog(festa.id, 'avaliacoes')">Avaliações</button>
+                <button class="button-default mx-3" (click)="navigateToAvaliarFesta(festa.id)">Avaliar</button>
+            </div>
         </div>
     </div>
-</div>
 
-<div *ngIf="isDialogOpen" class="modal">
-    <div class="modal-content">
-        <span class="close" (click)="closeDialog()">&times;</span>
-        <h2 class="modal-title">Avaliações da Festa</h2>
+    <div *ngIf="isDialogOpen" class="w-5/12">
+        <div class="modal-content">
+            <span class="close" (click)="closeDialog()">&times;</span>
+            <h2 class="modal-title">Avaliações da Festa</h2>
+        </div>
     </div>
 </div>

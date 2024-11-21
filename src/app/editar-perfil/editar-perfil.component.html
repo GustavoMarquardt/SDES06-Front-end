@@ -1,26 +1,36 @@
-<div class="cadastro-container">
-  <h2>Editar Perfil</h2>
+<div class="bg-default content-center justify-start">
+  <nav class="nav-default">
+    <ul>
+      <button class="button-lobby font-michroma" (click)="navigateToCadastroFesta()">Cadastrar Festas</button>
+      <button class="button-lobby font-michroma" (click)="navigateToFestas()">Festas</button>
+      <button class="button-lobby font-michroma text-white font-bold" (click)="navigateToEdit()">Editar Perfil</button>
+    </ul>
+  </nav>
+  <div class="h-12"></div>
+  <div class="div-default">
+    <h4 class="text-white self-center mb-16">Editar Perfil</h4>
 
-  <form (ngSubmit)="editar()">
-    <div>
-      <label for="nome_completo">Nome Completo</label>
-      <input type="text" id="nome_completo" [(ngModel)]="nome_completo" name="nome_completo" required />
-    </div>
-  
-    <div>
-      <label for="senha">Senha</label>
-      <input type="password" id="senha" [(ngModel)]="senha" name="senha" required />
-    </div>
-  
-    <div>
-      <label for="rede_social">Rede Social</label>
-      <input type="text" id="rede_social" [(ngModel)]="rede_social" name="rede_social" />
-    </div>
-  
-    <div *ngIf="errorMessage" class="error">
-      {{ errorMessage }}
-    </div>
-  
-    <button type="submit">Salvar Alterações</button>
-  </form>
+    <form class="flex flex-col" (ngSubmit)="editar()">
+      <div>
+        <label for="nome_completo">Nome Completo</label>
+        <input class="input-default" type="text" id="nome_completo" [(ngModel)]="nome_completo" name="nome_completo" required />
+      </div>
+    
+      <div>
+        <label for="senha">Senha</label>
+        <input class="input-default" type="password" id="senha" [(ngModel)]="senha" name="senha" required />
+      </div>
+    
+      <div>
+        <label for="rede_social">Rede Social</label>
+        <input class="input-default" type="text" id="rede_social" [(ngModel)]="rede_social" name="rede_social" />
+      </div>
+    
+      <div *ngIf="errorMessage" class="text-red-600 text-sm mt-3">
+        {{ errorMessage }}
+      </div>
+    
+      <button class="button-default self-center mt-16" type="submit">Salvar Alterações</button>
+    </form>
+  </div>
 </div>

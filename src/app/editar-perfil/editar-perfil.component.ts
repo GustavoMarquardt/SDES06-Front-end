@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   standalone: true, // Definindo o componente como standalone
   imports: [CommonModule, FormsModule], // Importando os módulos necessários
 })
+
 export class EditarPerfilComponent implements OnInit {
   nome_completo: string = '';
   senha: string = '';
@@ -81,5 +82,21 @@ export class EditarPerfilComponent implements OnInit {
       // Caso algum campo obrigatório não tenha sido preenchido
       this.errorMessage = 'Por favor, preencha todos os campos obrigatórios.';
     }
+  }
+
+  navigateToCadastroFesta(): void {
+    this.router.navigate(['/cadastrarFesta']);
+  }
+
+  navigateToLogout(): void {
+    this.router.navigate(['/']);
+  }
+
+  navigateToEdit():void{
+    this.router.navigate(['/editarPerfil']);
+  }
+
+  navigateToFestas(): void {
+    this.router.navigate(['/lobby'])
   }
 }

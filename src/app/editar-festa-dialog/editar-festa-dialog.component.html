@@ -1,4 +1,4 @@
-<mat-dialog-content style="padding: 20px; display: flex; flex-direction: column;">
+<mat-dialog-content class="bg-neutral-800" style="padding: 20px; display: flex; flex-direction: column;">
     <mat-form-field appearance="fill" style="width: 100%; min-height: 70px;">
       <mat-label>Nome da Festa</mat-label>
       <input matInput [(ngModel)]="data.nome_da_festa" />
@@ -35,8 +35,10 @@
     </mat-form-field>
   </mat-dialog-content>
   
-  <mat-dialog-actions style="display: flex; justify-content: flex-end; padding: 10px;">
-    <button mat-button (click)="cancelarEdicoes()">Cancelar</button>
-    <button mat-button color="primary" (click)="salvarEdicoes()">Salvar</button>
+  <mat-dialog-actions class="flex justify-center content-center">
+    <div class="flex justify-center content-center grow">
+      <button class="button-default self-center mx-6 px-6" mat-button (click)="cancelarEdicoes()">Cancelar</button>
+      <button class="button-default self-center mx-6 px-6" mat-button color="primary" (click)="salvarEdicoes()">Salvar</button>
+    </div>
   </mat-dialog-actions>
   

@@ -1,55 +1,56 @@
-<nav class="navbar">
-  <ul>
-    <li><button class="nav-button" (click)="navigateToCadastroFesta()">Cadastrar Festas</button></li>
-    <li><button class="nav-button" (click)="navigateToEdit()">Editar Profile</button></li>
-    <li><button class="nav-button" (click)="navigateToListarFestas()">Festas</button></li>
-    <li><button class="nav-button" (click)="navigateToMinhasFestas()">Minhas Festas</button></li>
-  </ul>
-</nav>
+<div class="bg-default content-center justify-start">
+  <nav class="nav-default">
+    <ul>
+      <button class="button-lobby font-michroma text-white font-bold" (click)="navigateToCadastroFesta()">Cadastrar Festas</button>
+      <button class="button-lobby font-michroma" (click)="navigateToLobby()">Festas</button>
+      <button class="button-lobby font-michroma" (click)="navigateToEdit()">Editar Perfil</button>
+    </ul>
+  </nav>
 
-<div class="cadastro-container">
-  <h2>Cadastrar Evento</h2>
+  <div class="div-default">
+    <h4 class="text-white text-xl self-center">Cadastrar Evento</h4>
 
-  <form (ngSubmit)="cadastrar()">
-    <div>
-      <label for="nome_da_festa">Nome da Festa</label>
-      <input type="text" id="nome_da_festa" [(ngModel)]="nome_da_festa" name="nome_da_festa" required />
-    </div>
+    <form class="flex flex-col" (ngSubmit)="cadastrar()">
+      <div>
+        <label for="nome_da_festa">Nome da Festa</label>
+        <input class="input-default" type="text" id="nome_da_festa" [(ngModel)]="nome_da_festa" name="nome_da_festa" required />
+      </div>
 
-    <div>
-      <label for="data_e_hora">Data e Hora</label>
-      <input type="datetime-local" id="data_e_hora" [(ngModel)]="data_e_hora" name="data_e_hora" required />
-    </div>
+      <div>
+        <label for="data_e_hora">Data e Hora</label>
+        <input  class="input-default" type="datetime-local" id="data_e_hora" [(ngModel)]="data_e_hora" name="data_e_hora" required />
+      </div>
 
-    <div>
-      <label for="localizacao">Localização</label>
-      <input type="text" id="localizacao" [(ngModel)]="localizacao" name="localizacao" required />
-    </div>
+      <div>
+        <label for="localizacao">Localização</label>
+        <input  class="input-default" type="text" id="localizacao" [(ngModel)]="localizacao" name="localizacao" required />
+      </div>
 
-    <div>
-      <label for="descricao">Descrição</label>  
-      <input type="text" id="descricao" [(ngModel)]="descricao" name="descricao" required />
-    </div>
+      <div>
+        <label for="descricao">Descrição</label>  
+        <input  class="input-default" type="text" id="descricao" [(ngModel)]="descricao" name="descricao" required />
+      </div>
 
-    <div>
-      <label for="capacidade">Capacidade</label>
-      <input type="number" id="capacidade" [(ngModel)]="capacidade" name="capacidade" required />
-    </div>
+      <div>
+        <label for="capacidade">Capacidade</label>
+        <input  class="input-default" type="number" id="capacidade" [(ngModel)]="capacidade" name="capacidade" required />
+      </div>
 
-    <div>
-      <label for="categoria">Categoria</label>
-      <input type="text" id="categoria" [(ngModel)]="categoria" name="categoria" required />
-    </div>
-    <div>
-      <label for="imagem_festa">Imagem da Festa</label>
-      <input type="file" (change)="onImageSelected($event)" />
-    </div>
-    
-    <div *ngIf="errorMessage" class="error">
-      {{ errorMessage }}
-    </div>
-    
+      <div>
+        <label for="categoria">Categoria</label>
+        <input  class="input-default" type="text" id="categoria" [(ngModel)]="categoria" name="categoria" required />
+      </div>
+      <div>
+        <label for="imagem_festa">Imagem da Festa</label>
+        <input  class="input-default" type="file" (change)="onImageSelected($event)" />
+      </div>
+      
+      <div *ngIf="errorMessage" class="error">
+        {{ errorMessage }}
+      </div>
+      
 
-    <button type="submit">Cadastrar</button>
-  </form>
+      <button type="submit" class="button-default justify-self-center self-center mt-8 px-8 " >Cadastrar</button>
+    </form>
+  </div>
 </div>

@@ -21,7 +21,9 @@ export class AvaliacoesService {
 
   // Método para obter avaliações de uma festa específica pelo ID da festa
   getAvaliacoesByFestaId(festaId: number): Observable<AvalicaoResponse[]> {
-    return this.http.get<AvalicaoResponse[]>(`${this.apiUrl}/avaliacoes/festa/${festaId}`);
+    const resposta = this.http.get<AvalicaoResponse[]>(`${this.apiUrl}/avaliacoes/festa/${festaId}`);
+    console.log('Resposta bd', resposta);
+    return resposta;
   }
 
   // Método para criar uma nova avaliação

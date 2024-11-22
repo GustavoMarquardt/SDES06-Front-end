@@ -14,3 +14,7 @@
     
   }
   
+  ::placeholder {
+    color: #222;
+    opacity: 1; /* Firefox */
+  }

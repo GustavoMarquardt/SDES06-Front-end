@@ -23,7 +23,7 @@
                 <p class="text-neutral-400 text-sm">{{ festa.descricao }}</p>
 
                 <!-- Botões para "Avaliações" e "Avaliar" -->
-                <button class="button-default mx-3" (click)="openDialog(festa.id, 'avaliacoes')">Avaliações</button>
+                <button class="button-default mx-3" (click)="navigateToAvaliacoesFesta(festa.id)">Avaliações</button>
                 <button class="button-default mx-3" (click)="navigateToAvaliarFesta(festa.id)">Avaliar</button>
             </div>
         </div>

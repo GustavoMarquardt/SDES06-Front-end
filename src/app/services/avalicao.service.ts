@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 import { AvalicaoInterface, AvalicaoResponse } from '../../interfaces/AvaliacaoInterface'; // Importe as interfaces aqui
 
 @Injectable({
@@ -10,7 +11,8 @@ export class AvaliacoesService {
 
   private apiUrl = 'http://localhost:3000/api/festas'; // URL base da API para avaliações
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
+
 
   // Método para obter todas as avaliações
   getAllAvaliacoes(): Observable<AvalicaoResponse[]> {
@@ -27,6 +29,8 @@ export class AvaliacoesService {
     this.http.post<AvalicaoResponse>('http://localhost:3000/api/festas/avaliacoes', avaliacao)
       .subscribe({
         next: (response) => {
+          window.alert("Avaliacao realizada com sucesso!")
+          this.router.navigate(['/login']); // Redireciona para a página de cadastro
           console.log('Resposta do backend:', response);
         },
         error: (err) => {

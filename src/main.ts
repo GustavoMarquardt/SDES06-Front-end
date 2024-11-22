@@ -12,6 +12,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { EditarPerfilComponent } from './app/editar-perfil/editar-perfil.component';
 import { ListaFestasComponent } from './app/lista-festas/lista-festas.component';
 import { ComentariosAvaliacoesComponent } from './app/comentarios-avalicoes/comentarios-avaliacoes.component';
+import { ListaAvaliacoesComponent} from './app/lista-avaliacoes/lista-avaliacoes.component';
+
 
 // Definindo as rotas
 const routes = [
@@ -23,6 +25,7 @@ const routes = [
   { path: 'editarPerfil', component: EditarPerfilComponent },
   { path: 'listarFestas', component: ListaFestasComponent },
   { path: 'avaliar/:festaId/:criadorId', component: ComentariosAvaliacoesComponent },
+  { path: 'avaliacoes/:festaId/:criadorId', component: ListaAvaliacoesComponent },
 ];
 
 // Inicializando a aplicação com o AppComponent

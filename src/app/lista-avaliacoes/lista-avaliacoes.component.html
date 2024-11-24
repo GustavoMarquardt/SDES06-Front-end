@@ -1,21 +1,47 @@
 <div class="bg-default justify-start">
-    <button class="button-lobby self-start text-2xl text-white w-fit pt-10" type="button" (click)="navigateToFestas()"> &lt; Voltar</button>
-    <div class="px-20">
-        <label class="text-white font-michroma text-4xl">Avaliacoes</label>
-        
-        <div *ngFor="let avaliacao of avaliacoes">
-            <!-- Comentário -->
-            <p style="color: aliceblue;">{{ avaliacao.comentario || 'Sem comentário' }}</p>
-          
-            <!-- Botões de Editar e Excluir -->
-            <div *ngIf="avaliacao.id_criador_avaliacao == userId">
-              <button (click)="editarAvaliacao(avaliacao)">Editar</button>
-              <button (click)="excluirAvaliacao(avaliacao.id)">Excluir</button>
-            </div>
-          
-            <hr />
-          </div>
-          
+  <button class="button-lobby self-start text-2xl text-white w-fit pt-10" type="button" (click)="navigateToFestas()"> &lt; Voltar</button>
+  <div class="px-20">
+    <label class="text-white font-michroma text-4xl">Avaliacoes</label>
+    
+    <div *ngFor="let avaliacao of avaliacoes" style="background-color: aliceblue;">
+      <!-- Detalhes da avaliação -->
+      <div>
+        <p><strong>Atendimento:</strong> {{ avaliacao.atendimento }}</p>
+        <p><strong>Bar:</strong> {{ avaliacao.bar }}</p>
+        <p><strong>Localização:</strong> {{ avaliacao.localizacao }}</p>
+        <p><strong>Organização:</strong> {{ avaliacao.organizacao }}</p>
+        <p><strong>Preço:</strong> {{ avaliacao.preco }}</p>
+        <p><strong>Qualidade da Música:</strong> {{ avaliacao.qualidade_musica }}</p>
+        <p><strong>Comentário:</strong> {{ avaliacao.comentario || 'Sem comentário' }}</p>
+      </div>
 
+      <!-- Lista de Comentários da Avaliação -->
+      <div *ngFor="let comentario of comentarios">
+        <div *ngIf="comentario.id_avaliacao === avaliacao.id">
+          <p><strong>Comentário:</strong> {{ comentario.comentario }}</p>
+
+          <!-- Verifica se o comentário foi criado pelo usuário atual -->
+          <div *ngIf="comentario.id_criador_comentario === userId">
+            <!-- Botão para abrir o diálogo de edição -->
+            <button mat-button (click)="openEditDialog(comentario)">Editar</button>
+            <button mat-button (click)="excluirComentario(comentario.id)">Excluir</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulário para adicionar comentário -->
+      <div *ngIf="avaliacao.id_criador_avaliacao == userId">
+        <textarea [(ngModel)]="novoComentario" placeholder="Escreva um comentário..." rows="4" cols="50"></textarea>
+        <button (click)="adicionarComentario(avaliacao.id)">Adicionar Comentário</button>
+      </div>
+
+      <!-- Botões de editar e excluir avaliação -->
+      <div *ngIf="avaliacao.id_criador_avaliacao == userId">
+        <button (click)="editarAvaliacao(avaliacao.id)">Editar Avaliação</button>
+        <button (click)="excluirAvaliacao(avaliacao.id)">Excluir Avaliação</button>
+      </div>
+
+      <hr />
     </div>
+  </div>
 </div>

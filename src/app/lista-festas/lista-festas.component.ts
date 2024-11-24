@@ -24,7 +24,7 @@ export class ListaFestasComponent {
   selectedFestaId: string | null = null;
   showAvaliarForm: boolean = false; // Controle para exibir o formulário de avaliação
   errorMessage: string = '';
-
+  userId: string = '';
   constructor(
     private festasService: FestasService,
     private router: Router,
@@ -36,9 +36,11 @@ export class ListaFestasComponent {
   }
 
   ngOnInit(): void {
+    console.log('oi');
     // Carrega as festas
     this.festasService.getAllFestas().subscribe(
       (response: any) => {
+        console.log('Resposta completa:', response); // Verifica a estrutura da resposta
         // Verifica se response.festas é um array
         if (Array.isArray(response.festas)) {
           this.festas = response.festas.map((festa: any) => {
@@ -46,6 +48,7 @@ export class ListaFestasComponent {
               const blob = this.convertBufferToBlob(festa.imagem_festa);
               festa.imagem_festa = URL.createObjectURL(blob);
             }
+            console.log('festas', festa); // Verifica o objeto festa
             return festa;
           });
         } else {
@@ -59,6 +62,7 @@ export class ListaFestasComponent {
       }
     );
   }
+  
 
   // Função para abrir o formulário de avaliação (exibindo diretamente na tela)
   openAvaliarDialog(festaId: string) {
@@ -124,13 +128,13 @@ export class ListaFestasComponent {
   // Dentro de ListaFestasComponent
   navigateToAvaliarFesta(festaId: string): void {
     const userId = sessionStorage.getItem('userId');
-    console.log('opssss',userId);
+    console.log('VCS NÃO FAZEM MERDA NENHUMA',userId);
     this.router.navigate([`avaliar/${festaId}/${userId}`]);
   }
 
   navigateToAvaliacoesFesta(festaId: string): void {
     const userId = sessionStorage.getItem('userId');
-    console.log('opssss',userId);
+    console.log('VSF FILHO DA PUTA',userId);
     this.router.navigate([`avaliacoes/${festaId}/${userId}`]);
   }
   

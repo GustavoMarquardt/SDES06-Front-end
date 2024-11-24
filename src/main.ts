@@ -13,6 +13,7 @@ import { EditarPerfilComponent } from './app/editar-perfil/editar-perfil.compone
 import { ListaFestasComponent } from './app/lista-festas/lista-festas.component';
 import { ComentariosAvaliacoesComponent } from './app/comentarios-avalicoes/comentarios-avaliacoes.component';
 import { ListaAvaliacoesComponent} from './app/lista-avaliacoes/lista-avaliacoes.component';
+import { EditarAvaliacaoComponent } from './app/editar-avaliacao/editar-avaliacao.component';
 
 
 // Definindo as rotas
@@ -26,6 +27,7 @@ const routes = [
   { path: 'listarFestas', component: ListaFestasComponent },
   { path: 'avaliar/:festaId/:criadorId', component: ComentariosAvaliacoesComponent },
   { path: 'avaliacoes/:festaId/:criadorId', component: ListaAvaliacoesComponent },
+  { path: 'editarAvaliacao', component: EditarAvaliacaoComponent}
 ];
 
 // Inicializando a aplicação com o AppComponent

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AvalicaoInterface, AvalicaoResponse } from '../../interfaces/AvaliacaoInterface'; // Importe as interfaces aqui
+import { ComentarioInterface, ComentarioResponse } from '../../interfaces/ComentarioInterface';
 
 @Injectable({
   providedIn: 'root'
@@ -42,13 +43,74 @@ export class AvaliacoesService {
   }
   
 
-  // Método para atualizar uma avaliação pelo ID
   atualizarAvaliacao(avaliacao: AvalicaoInterface): Observable<AvalicaoResponse> {
-    return this.http.put<AvalicaoResponse>(`http://localhost:3000/api/festas/avaliacoes`, avaliacao);
+    console.log('id avalicao',avaliacao.id)
+    const request = this.http.put<AvalicaoResponse>(`http://localhost:3000/api/festas/avaliacoes/${avaliacao.id}`, avaliacao);
+    
+    request.subscribe({
+      next: (response) => {
+        console.log('Resposta do backend:', response);
+      },
+      error: (error) => {
+        console.error('Erro ao chamar o backend:', error);
+      },
+      complete: () => {
+        console.log('Requisição PUT concluída.');
+      }
+    });
+  
+    return request; // Retorna o Observable
   }
 
   // Método para excluir uma avaliação pelo ID
-  excluirAvaliacao(avaliacaoId: number): Observable<void> {
-    return this.http.delete<void>(`http://localhost:3000/api/festas/avaliacoes`);
+  excluirAvaliacao(avaliacaoId: number): void {
+    console.log('Chamando DELETE com ID:', avaliacaoId);
+  
+    this.http.delete(`http://localhost:3000/api/festas/avaliacoes/${avaliacaoId}`).subscribe({
+      next: (response) => {
+        console.log('Resposta do backend:', response);
+      },
+      error: (error) => {
+        console.error('Erro ao chamar o backend:', error);
+      },
+      complete: () => {
+        console.log('Requisição DELETE concluída.');
+      }
+    });
   }
+
+    // Método para adicionar um comentário
+    adicionarComentario(comentarioData: { id_avaliacao: number; id_criador_comentario: number; comentario: string }): Observable<any> {
+      console.log('comentario',comentarioData)
+      return this.http.post<any>(`http://localhost:3000/api/festas/comentarios`, comentarioData);
+    }
+  
+    getComentarios(avaliacaoId: number):Observable<ComentarioResponse>{
+      console.log('get comentairo',avaliacaoId)
+      var res ;
+      res = this.http.get<ComentarioResponse>(`http://localhost:3000/api/festas/comentarios`);
+      console.log('resposta', res);
+      return res;
+    }
+
+    excluirComentario(avaliacaoId: number): void {
+      console.log('Chamando DELETE com ID:', avaliacaoId);
+    
+      this.http.delete(`http://localhost:3000/api/festas/comentarios/${avaliacaoId}`).subscribe({
+        next: (response) => {
+          console.log('Resposta do backend:', response);
+        },
+        error: (error) => {
+          console.error('Erro ao chamar o backend:', error);
+        },
+        complete: () => {
+          console.log('Requisição DELETE concluída.');
+        }
+      });
+    }
+
+    atualizarComentario(id: number, comentario: ComentarioInterface): Observable<ComentarioResponse> {
+      return this.http.put<ComentarioResponse>(`${this.apiUrl}/comentarios/${id}`, comentario);
+    }
+  
 }

@@ -1,0 +1,36 @@
+<div class="bg-default">
+    <button class="button-lobby self-start text-2xl text-white" type="button" (click)="navigateToFestas()"> &lt; Voltar</button>
+    <div> 
+      <form class="div-default" (ngSubmit)="cadastrar()">
+        <div class="self-center text-white text-3xl mb-6 font-michroma">Avaliar</div>
+  
+        <label for="organizacao">Organização</label>
+        <input class="input-default" type="number" id="organizacao" name="organizacao" min="1" max="5" [(ngModel)]="organizacao" required />
+  
+        <label for="qualidade_musica">Qualidade da Música</label>
+        <input class="input-default" type="number" id="qualidade_musica" name="qualidade_musica" min="1" max="5" [(ngModel)]="qualidade_musica" required />
+  
+        <label for="bar">Bar</label>
+        <input class="input-default" type="number" id="bar" name="bar" min="1" max="5" [(ngModel)]="bar" required />
+  
+        <label for="atendimento">Atendimento</label>
+        <input class="input-default" type="number" id="atendimento" name="atendimento" min="1" max="5" [(ngModel)]="atendimento" required />
+  
+        <label for="localizacao">Localização</label>
+        <input class="input-default" type="number" id="localizacao" name="localizacao" min="1" max="5" [(ngModel)]="localizacao" required />
+  
+        <label for="preco">Preço</label>
+        <input class="input-default" type="number" id="preco" name="preco" min="1" max="5" [(ngModel)]="preco" required />
+  
+        <label for="comentario">Comentário</label>
+        <input class="input-default" type="text" id="comentario" name="comentario" [(ngModel)]="comentario" maxlength="150" placeholder="(máximo 150 caracteres)" />
+        
+        <div *ngIf="errorMessage" class="error">
+          {{ errorMessage }}
+        </div>
+  
+        <button type="submit" class="mt-10 self-center button-default px-6">Cadastrar</button>
+      </form>
+    </div>
+  </div>
+  

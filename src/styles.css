@@ -3,13 +3,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .mat-dialog-container {
-  margin: auto;            /* Garante que o conteúdo do diálogo esteja centralizado */
+  margin: auto; /* Garante que o conteúdo do diálogo esteja centralizado */
   position: relative;
   top: 10%;
 }
@@ -21,19 +27,28 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
            duration-200 ease-in-out hover:scale-105
            rounded
            w-fit h-fit
-           border-4 border-violet-700 hover:border-violet-400
-
+           border-4 border-violet-700 hover:border-violet-400;
   }
 
-  .bg-default{
-    @apply  bg-neutral-900 
+  .bg-default {
+    @apply bg-neutral-900 
+            
               flex w-full h-full flex-col
               content-center justify-center
               border-8 border-neutral-900
-              space-y-9
+              space-y-9;
   }
 
-  .div-default{
+  .bg-default-avaliacao {
+    @apply bg-neutral-900 
+            
+              flex w-full flex-col
+              content-center justify-center
+              border-8 border-neutral-900
+              space-y-9;
+  }
+
+  .div-default {
     @apply bg-neutral-900
              flex flex-col
              content-center justify-center justify-self-center self-center
@@ -41,35 +56,35 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
              rounded-2xl
              h-fit
              w-96
-             p-4
+             p-4;
   }
 
-  .title-default{
-    @apply text-neutral-200 text-sm font-bold justify-self-center self-center
+  .title-default {
+    @apply text-neutral-200 text-sm font-bold justify-self-center self-center;
   }
-  
-  .input-default{
+
+  .input-default {
     @apply bg-neutral-700  focus:bg-neutral-600
              w-full
              flex
              px-1
              border-2 border-neutral-700
              rounded
-             text-white
+             text-white;
   }
 
-  .button-lobby{
+  .button-lobby {
     @apply text-neutral-400 border border-transparent my-1 py-0.5 
           hover:border-b-violet-700 hover:border hover:scale-105
             mx-10
-            duration-200 ease-in-out 
+            duration-200 ease-in-out;
   }
 
-  .nav-default{
+  .nav-default {
     @apply flex flex-row
     border-b border-b-violet-500
     space-x-10
     justify-center content-center
-    py-2
+    py-2;
   }
 }

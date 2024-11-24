@@ -1,4 +1,4 @@
-<h2 mat-dialog-title class="rosa-texto">Editar Comentário</h2>
+<h2 mat-dialog-title class="text-white">Editar Comentário</h2>
 
 <mat-dialog-content>
   <!-- Exibe o comentário atual que pode ser editado -->
@@ -6,7 +6,7 @@
     [(ngModel)]="novoComentario" 
     (ngModelChange)="console.log('Mudou para:', novoComentario)" 
     placeholder="Edite seu comentário aqui..." 
-    class="rosa-texto" />
+    class="text-black" />
   
   <!-- Exibe o comentário atualizado à medida que o usuário digita -->
   <div>
@@ -16,6 +16,6 @@
 
 <mat-dialog-actions>
   <!-- Botões de Ação -->
-  <button mat-button (click)="dialogRef.close()" class="rosa-texto">Cancelar</button>
-  <button mat-button color="primary" (click)="logComentario(novoComentario)" class="rosa-texto">Atualizar</button>
+  <button mat-button (click)="dialogRef.close()" class="text-white mx-2">Cancelar</button>
+  <button mat-button color="primary" (click)="atualizarComentario()" class="text-white">Atualizar</button>
 </mat-dialog-actions>

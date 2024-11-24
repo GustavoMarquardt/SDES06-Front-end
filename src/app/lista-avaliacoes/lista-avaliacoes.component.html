@@ -3,6 +3,19 @@
     <div class="px-20">
         <label class="text-white font-michroma text-4xl">Avaliacoes</label>
         
+        <div *ngFor="let avaliacao of avaliacoes">
+            <!-- Comentário -->
+            <p style="color: aliceblue;">{{ avaliacao.comentario || 'Sem comentário' }}</p>
+          
+            <!-- Botões de Editar e Excluir -->
+            <div *ngIf="avaliacao.id_criador_avaliacao == userId">
+              <button (click)="editarAvaliacao(avaliacao)">Editar</button>
+              <button (click)="excluirAvaliacao(avaliacao.id)">Excluir</button>
+            </div>
+          
+            <hr />
+          </div>
+          
 
     </div>
 </div>

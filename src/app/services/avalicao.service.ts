@@ -64,21 +64,34 @@ export class AvaliacoesService {
 
   // Método para excluir uma avaliação pelo ID
   excluirAvaliacao(avaliacaoId: number): void {
+    const confirmacao = window.confirm('Tem certeza de que deseja excluir esta avaliação?');
+  
+    if (!confirmacao) {
+      // Se o usuário cancelar, interrompe o fluxo
+      return;
+    }
+  
     console.log('Chamando DELETE com ID:', avaliacaoId);
   
     this.http.delete(`http://localhost:3000/api/festas/avaliacoes/${avaliacaoId}`).subscribe({
       next: (response) => {
         console.log('Resposta do backend:', response);
+        alert('Avaliação excluída com sucesso!');
+        this.ngOnInit(); // Atualize a lista de avaliações
       },
       error: (error) => {
         console.error('Erro ao chamar o backend:', error);
+        alert('Erro ao excluir a avaliação. Tente novamente.');
       },
       complete: () => {
         console.log('Requisição DELETE concluída.');
       }
     });
   }
-
+  ngOnInit() {
+    throw new Error('Method not implemented.');
+  }
+  
     // Método para adicionar um comentário
     adicionarComentario(comentarioData: { id_avaliacao: number; id_criador_comentario: number; comentario: string }): Observable<any> {
       console.log('comentario',comentarioData)

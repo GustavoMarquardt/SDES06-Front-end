@@ -1,3 +1,4 @@
+// edit-comentario-dialog.component.ts
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http'; 
@@ -11,29 +12,36 @@ import { AvaliacoesService } from '../services/avalicao.service';
 })
 export class EditComentarioDialogComponent {
   comentario: ComentarioInterface;
-  novoComentario: string = '';  // Variável para armazenar o comentário
+  novoComentario: string = '';  // Variable to store the new comment
 
   constructor(
     public dialogRef: MatDialogRef<EditComentarioDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private comentarioService: AvaliacoesService
   ) {
-    this.comentario = { ...data.comentario };  // Cria uma cópia do comentário
-    this.novoComentario = this.comentario.comentario; // Inicializa com o comentário existente
+    this.comentario = { ...data.comentario };  // Create a copy of the comment
+    this.novoComentario = this.comentario.comentario; // Initialize with the existing comment
   }
 
-  atualizarComentario() {
-    // Cria um novo objeto com a propriedade comentario atualizada
-    const comentarioAtualizado = { ...this.comentario, comentario: this.novoComentario };
+  atualizarComentario(novoComentario: string): void {
+    const comentarioAtualizado: ComentarioInterface = { 
+        ...this.comentario, 
+        comentario: novoComentario // Use o valor do parâmetro
+    };
+
+    console.log('Comentário enviado para o backend:', comentarioAtualizado.comentario);
 
     this.comentarioService.atualizarComentario(comentarioAtualizado.id, comentarioAtualizado).subscribe(
-      (response: ComentarioResponse) => {
-        console.log('Comentário atualizado com sucesso', response.status);
-        this.dialogRef.close(true); // Fecha o diálogo com sucesso
-      },
-      (error: HttpErrorResponse) => {
-        console.error('Erro ao atualizar o comentário', error.message);
-      }
+        (response: ComentarioResponse) => {
+            console.log('Comentário atualizado com sucesso:', response);
+            this.dialogRef.close(true);
+        },
+        (error: HttpErrorResponse) => {
+            console.error('Erro ao atualizar o comentário:', error);
+        }
     );
   }
+
+
+  
 }

@@ -1,7 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { EditComentarioDialogComponent } from './edit-comentario-dialog/edit-comentario-dialog.component';
+
+
+@NgModule({
+  declarations: [
+    EditComentarioDialogComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule // Add FormsModule here
+  ],
+  providers: [],
+  bootstrap: []
+})
+export class AppModule { }
+
 
 @Component({
   selector: 'app-root',

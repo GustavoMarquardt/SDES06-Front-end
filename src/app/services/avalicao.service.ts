@@ -110,7 +110,9 @@ export class AvaliacoesService {
     }
 
     atualizarComentario(id: number, comentario: ComentarioInterface): Observable<ComentarioResponse> {
+      console.log('Chamando PUT para atualizar o comentário:', id, comentario);
       return this.http.put<ComentarioResponse>(`${this.apiUrl}/comentarios/${id}`, comentario);
     }
+    
   
 }

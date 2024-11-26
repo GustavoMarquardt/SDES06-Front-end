@@ -10,20 +10,27 @@ import { FestaInterface } from '../../interfaces/FestaInterface'; // Importe o m
 })
 export class GerarRelatorioComponent implements AfterViewInit, OnInit {
   chart!: Chart;
-  festasPorMes: number[] = new Array(12).fill(0); // Array para armazenar as contagens de festas por mês
+  festasPorMes: number[] = [0,0,0,0,0,0,0,0,0,0,0,0]; // Array para armazenar as contagens de festas por mês
 
   constructor(private festasService: FestasService) {}
 
   ngOnInit() {
     this.carregarDados();
-    this.initializeChart('barChart1', 'chart1');
-    console.log("this.response.festasPorMes:::", this.festasPorMes)
+    console.log("Tipo esperado: array",typeof([1,2,3,4,5,6,7,8,9,10,11,12]))
+    console.log("Tipo de festasPorMes",typeof(this.festasPorMes))
+    setTimeout(() => {
+      console.log("this.response.festasPorMes:::", this.festasPorMes)
+      this.initializeChart1('barChart1', 'chart1')
+      this.initializeChart2('barChart2', 'chart2')
+      this.initializeChart3('barChart3', 'chart3')
+    }, 200)
   }
+  
 
   carregarDados() {
     this.festasService.getAllFestas().subscribe(response => {
-      console.log('Resposta da API:', response);
-      console.log('response[0]: ', response.festas);
+      console.log('Resposta da API:', typeof(response));
+      console.log('response[0]: ', typeof(response.festas));
   
       // Acessar diretamente a propriedade 'festas' da resposta
       const festas: FestaInterface[] = response.festas;
@@ -39,29 +46,24 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
     this.festasPorMes = this.festasPorMes.slice(0, 12)
   }
 
+  ngAfterViewInit() {}
+
   chart1!: Chart;
-  chart2!: Chart;
+  initializeChart1(canvasId: string, chartProperty: 'chart1') {
+    let data = {
+      labels: [
+        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+      ],
+      datasets: [{
+        label: 'Festas por Mês',
+        data: this.festasPorMes, // Substitua pelos dados reais
+        backgroundColor: 'rgba(75, 192, 192, 0.3)',
+        borderColor: 'rgba(0, 0, 0, 1)',
+        borderWidth: 1
+      }]
+    };
 
-  data = {
-    labels: [
-      'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-      'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
-    ],
-    datasets: [{
-      label: 'Festas por Mês',
-      data: this.festasPorMes, // Substitua pelos dados reais
-      backgroundColor: 'rgba(75, 192, 192, 0.2)',
-      borderColor: 'rgba(75, 192, 192, 1)',
-      borderWidth: 1
-    }]
-  };
-
-  
-  ngAfterViewInit() {
-    this.initializeChart('barChart1', 'chart1');
-  }
-
-  initializeChart(canvasId: string, chartProperty: 'chart1') {
     if (this.chart) {
       this.chart.destroy();
     }
@@ -69,7 +71,95 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
     if (canvas) {
       this[chartProperty] = new Chart(canvas, {
         type: 'bar',
-        data: this.data,
+        data: data,
+        options: {
+          scales: {
+            x: {
+              title: { display: true, text: 'Meses' }
+            },
+            y: {
+              title: { display: true, text: 'Quantidade de Festas' },
+              beginAtZero: true
+            }
+          },
+          plugins: {
+            legend: {
+              position: 'top',
+            }
+          }
+        }
+      });
+    }
+  }
+
+  chart2!: Chart;
+  initializeChart2(canvasId: string, chartProperty: 'chart2') {
+    let data = {
+      labels: [
+        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+      ],
+      datasets: [{
+        label: 'Festas por Mês',
+        data: this.festasPorMes, // Substitua pelos dados reais
+        backgroundColor: 'rgba(75, 192, 192, 0.3)',
+        borderColor: 'rgba(0, 0, 0, 1)',
+        borderWidth: 1
+      }]
+    };
+
+    if (this.chart) {
+      this.chart.destroy();
+    }
+    const canvas = document.getElementById(canvasId) as HTMLCanvasElement;
+    if (canvas) {
+      this[chartProperty] = new Chart(canvas, {
+        type: 'bar',
+        data: data,
+        options: {
+          scales: {
+            x: {
+              title: { display: true, text: 'Meses' }
+            },
+            y: {
+              title: { display: true, text: 'Quantidade de Festas' },
+              beginAtZero: true
+            }
+          },
+          plugins: {
+            legend: {
+              position: 'top',
+            }
+          }
+        }
+      });
+    }
+  }
+
+  chart3!: Chart;
+  initializeChart3(canvasId: string, chartProperty: 'chart3') {
+    let data = {
+      labels: [
+        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+      ],
+      datasets: [{
+        label: 'Festas por Mês',
+        data: this.festasPorMes, // Substitua pelos dados reais
+        backgroundColor: 'rgba(75, 192, 192, 0.3)',
+        borderColor: 'rgba(0, 0, 0, 1)',
+        borderWidth: 1
+      }]
+    };
+
+    if (this.chart) {
+      this.chart.destroy();
+    }
+    const canvas = document.getElementById(canvasId) as HTMLCanvasElement;
+    if (canvas) {
+      this[chartProperty] = new Chart(canvas, {
+        type: 'bar',
+        data: data,
         options: {
           scales: {
             x: {

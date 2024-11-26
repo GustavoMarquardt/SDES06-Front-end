@@ -108,6 +108,7 @@ export class ListaAvaliacoesComponent {
   excluirAvaliacao(avaliacaoId: number): void {
     console.log('avaliacaoID, exclusao', avaliacaoId);
     this.avaliacaoService.excluirAvaliacao(avaliacaoId);
+    location.reload();
   }
 
   // Método para cadastrar um comentário

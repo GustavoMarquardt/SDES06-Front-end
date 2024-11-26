@@ -33,7 +33,7 @@ export class AvaliacoesService {
       .subscribe({
         next: (response) => {
           window.alert("Avaliacao realizada com sucesso!")
-          this.router.navigate(['/login']); // Redireciona para a página de cadastro
+          this.router.navigate(['/lobby']); // Redireciona para a página de cadastro
           console.log('Resposta do backend:', response);
         },
         error: (err) => {

@@ -14,7 +14,7 @@ import { ListaFestasComponent } from './app/lista-festas/lista-festas.component'
 import { ComentariosAvaliacoesComponent } from './app/comentarios-avalicoes/comentarios-avaliacoes.component';
 import { ListaAvaliacoesComponent} from './app/lista-avaliacoes/lista-avaliacoes.component';
 import { EditarAvaliacaoComponent } from './app/editar-avaliacao/editar-avaliacao.component';
-
+import { GerarRelatorioComponent } from './app/gerar-relatorio/gerar-relatorio.component';
 
 // Definindo as rotas
 const routes = [
@@ -27,7 +27,8 @@ const routes = [
   { path: 'listarFestas', component: ListaFestasComponent },
   { path: 'avaliar/:festaId/:criadorId', component: ComentariosAvaliacoesComponent },
   { path: 'avaliacoes/:festaId/:criadorId', component: ListaAvaliacoesComponent },
-  { path: 'editarAvaliacao', component: EditarAvaliacaoComponent}
+  { path: 'editarAvaliacao', component: EditarAvaliacaoComponent},
+  { path: 'gerarRelatorio', component: GerarRelatorioComponent}
 ];
 
 // Inicializando a aplicação com o AppComponent

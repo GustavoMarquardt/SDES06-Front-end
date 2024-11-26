@@ -27,6 +27,12 @@ export class AvaliacoesService {
     return resposta;
   }
 
+  getAvaliacoesByFestaId2(festaId: number): Observable<AvalicaoResponse> {
+    const resposta = this.http.get<AvalicaoResponse>(`${this.apiUrl}/avaliacoes/festa/${festaId}`);
+    console.log('Resposta bd', resposta);
+    return resposta;
+  }
+
   // Método para criar uma nova avaliação
   criarAvaliacao(avaliacao: AvalicaoInterface): void {
     this.http.post<AvalicaoResponse>('http://localhost:3000/api/festas/avaliacoes', avaliacao)

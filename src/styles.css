@@ -41,8 +41,8 @@ body {
 
   .bg-default-avaliacao {
     @apply bg-neutral-900 
-            
-              flex w-full flex-col
+              h-max
+              flex w-full flex-col min-h-screen 
               content-center justify-center
               border-8 border-neutral-900
               space-y-9;

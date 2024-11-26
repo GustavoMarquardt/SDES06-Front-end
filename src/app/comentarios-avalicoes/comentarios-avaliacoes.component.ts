@@ -24,6 +24,7 @@ export class ComentariosAvaliacoesComponent {
   comentario: string = '';
   festaId: string = '';
   criadorFestaId: string = '';
+errorMessage: any;
 
 
   constructor(

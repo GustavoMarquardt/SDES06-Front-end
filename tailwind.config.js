@@ -12,6 +12,7 @@ module.exports = {
     "./src/app/lista-festas/lista-festas.component.html",
     "./src/app/comentarios-avaliacoes/comentarios-avaliacoes.component.html",
     "./src/app/lista-avaliacoes/lista-avaliacoes.component.html",
+    "./src/app/gerar-relatorio/gerar-relatorio.component.html",
     "./src/**/*.{html,js}",
     
   ],

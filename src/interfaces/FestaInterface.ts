@@ -1,5 +1,4 @@
 export interface FestaInterface {
-  
   capacidade: number;
   categoria: string;
   data_e_hora: string;

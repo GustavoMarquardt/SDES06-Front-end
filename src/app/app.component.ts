@@ -1,7 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { EditComentarioDialogComponent } from './edit-comentario-dialog/edit-comentario-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
+
+
+@NgModule({
+  declarations: [
+    EditComentarioDialogComponent
+  ],
+  imports: [
+    HttpClientModule,
+    BrowserModule,
+    FormsModule // Add FormsModule here
+  ],
+  providers: [],
+  bootstrap: []
+})
+export class AppModule { }
+
 
 @Component({
   selector: 'app-root',

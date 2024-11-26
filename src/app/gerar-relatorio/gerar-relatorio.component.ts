@@ -1,39 +1,79 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { Chart } from 'chart.js/auto';
+import { FestasService } from '../services/festas.service'; // Importe o serviço
+import { FestaInterface } from '../../interfaces/FestaInterface'; // Importe o modelo
 
 @Component({
-  selector: 'app-bar-chart',
+  selector: 'app-gerar-relatorio',
   templateUrl: './gerar-relatorio.component.html',
   styleUrls: ['./gerar-relatorio.component.css']
 })
-export class GerarRelatorioComponent{
-  // Dados do gráfico
-  public barChartData = {
-    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-    datasets: [
-      {
-        label: 'Quantidade de Festas',
-        data: [3, 5, 8, 2, 6, 7, 9, 4, 5, 6, 3, 4], // Quantidade de festas por mês
-        backgroundColor: '#42A5F5',
-        borderColor: '#1E88E5',
-        borderWidth: 1
-      }
-    ]
-  };
+export class GerarRelatorioComponent implements AfterViewInit, OnInit {
+  chart!: Chart;
+  festasPorMes: number[] = new Array(12).fill(0); // Array para armazenar as contagens de festas por mês
 
-  // Opções do gráfico
-  public barChartOptions = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-    },
-    scales: {
-      y: {
-        beginAtZero: true
-      }
+  constructor(private festasService: FestasService) {}
+
+  ngOnInit() {
+    this.carregarDados();
+  }
+
+  carregarDados() {
+    this.festasService.getAllFestas().subscribe(response => {
+      console.log('Resposta da API:', response);
+      
+      // Acessar diretamente a propriedade 'festas' da resposta
+      const festas: FestaInterface[] = response[0].festas;
+  
+      // Processar as festas e contar por mês
+      festas.forEach(festa => {
+        const data = new Date(festa.data_e_hora);
+        const mes = data.getMonth(); // Retorna o mês (0 = Janeiro, 11 = Dezembro)
+        this.festasPorMes[mes]++;
+      });
+  
+      // Inicializar o gráfico após carregar os dados
+      this.initializeChart();
+    });
+  }
+
+  ngAfterViewInit() {}
+
+  initializeChart() {
+    const canvas = document.getElementById('barChart') as HTMLCanvasElement;
+    if (canvas) {
+      this.chart = new Chart(canvas, {
+        type: 'bar',
+        data: {
+          labels: [
+            'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+            'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+          ],
+          datasets: [{
+            label: 'Festas por Mês',
+            data: this.festasPorMes, // Use os dados processados
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            x: {
+              title: { display: true, text: 'Meses' }
+            },
+            y: {
+              title: { display: true, text: 'Quantidade de Festas' },
+              beginAtZero: true
+            }
+          },
+          plugins: {
+            legend: {
+              position: 'top',
+            }
+          }
+        }
+      });
     }
-  };
-
-  public barChartType: any = 'bar';
+  }
 }

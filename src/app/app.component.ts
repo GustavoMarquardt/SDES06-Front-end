@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { EditComentarioDialogComponent } from './edit-comentario-dialog/edit-comentario-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { EditComentarioDialogComponent } from './edit-comentario-dialog/edit-com
     EditComentarioDialogComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     FormsModule // Add FormsModule here
   ],

@@ -137,4 +137,8 @@ export class LobbyComponent {
   navigateToFestas(): void {
     this.router.navigate(['/listarFestas'])
   }
+
+  navigateToRelatorio(): void {
+    this.router.navigate(['/gerarRelatorio'])
+  }
 }

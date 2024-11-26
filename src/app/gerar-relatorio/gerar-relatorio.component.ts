@@ -4,6 +4,7 @@ import { FestasService } from '../services/festas.service'; // Importe o serviç
 import { FestaInterface } from '../../interfaces/FestaInterface'; // Importe o modelo
 import { AvaliacoesService } from '../services/avalicao.service'; // Importe o serviço
 import { AvalicaoInterface } from '../../interfaces/AvaliacaoInterface'; // Importe o modelo
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gerar-relatorio',
@@ -17,7 +18,8 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
   qualidadePorMes: number[] = [0,0,0,0,0,0,0,0,0,0,0,0];
   capacidadePorMes: number[] = [0,0,0,0,0,0,0,0,0,0,0,0];
 
-  constructor(private festasService: FestasService, private avaliacoesService: AvaliacoesService) {}
+  constructor(private festasService: FestasService, private avaliacoesService: AvaliacoesService, private router: Router) {}
+
 
   ngOnInit() {
     this.carregarDados();
@@ -225,5 +227,25 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
         }
       });
     }
+  }
+
+  navigateToCadastroFesta(): void {
+    this.router.navigate(['/cadastrarFesta']);
+  }
+
+  navigateToLogout(): void {
+    this.router.navigate(['/']);
+  }
+
+  navigateToEdit():void{
+    this.router.navigate(['/editarPerfil']);
+  }
+
+  navigateToFestas(): void {
+    this.router.navigate(['/lobby'])
+  }
+
+  navigateToRelatorio(): void {
+    this.router.navigate(['/gerarRelatorio'])
   }
 }

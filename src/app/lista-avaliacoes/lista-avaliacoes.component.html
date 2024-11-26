@@ -3,45 +3,50 @@
   <div class="px-20">
     <label class="text-white font-michroma text-4xl">Avaliações</label>
     
-    <div *ngFor="let avaliacao of avaliacoes" style="bg-default;">
-      <!-- Detalhes da avaliação -->
-      <div class="font-michroma text-white pt-2">
-        <p><strong>Atendimento:</strong> {{ avaliacao.atendimento }}</p>
-        <p><strong>Bar:</strong> {{ avaliacao.bar }}</p>
-        <p><strong>Localização:</strong> {{ avaliacao.localizacao }}</p>
-        <p><strong>Organização:</strong> {{ avaliacao.organizacao }}</p>
-        <p><strong>Preço:</strong> {{ avaliacao.preco }}</p>
-        <p><strong>Qualidade da Música:</strong> {{ avaliacao.qualidade_musica }}</p>
-        <p><strong>Comentário:</strong> {{ avaliacao.comentario || 'Sem comentário' }}</p>
-      </div>
+    <div *ngFor="let avaliacao of avaliacoes" style="bg-default">
+      
 
-      <!-- Lista de Comentários da Avaliação -->
-      <div *ngFor="let comentario of comentarios" class="font-michroma text-white">
-        <div *ngIf="comentario.id_avaliacao === avaliacao.id">
-          <p><strong>Comentário:</strong> {{ comentario.comentario }}</p>
+      <div class="bg-neutral-700 px-2 rounded-xl mb-2">
+        <!-- Botões de editar e excluir avaliação -->
+        <div *ngIf="avaliacao.id_criador_avaliacao == userId" class="py-2">
+          <button (click)="editarAvaliacao(avaliacao.id)" class="text-white button-default">Editar Avaliação</button>
+          <button (click)="excluirAvaliacao(avaliacao.id)" class="text-white button-default ml-2">Excluir Avaliação</button>
+        </div>
+        <!-- Detalhes da avaliação -->
+        <div class="font-michroma text-white pt-2">
+          <p><strong>Atendimento:</strong> {{ avaliacao.atendimento }}</p>
+          <p><strong>Bar:</strong> {{ avaliacao.bar }}</p>
+          <p><strong>Localização:</strong> {{ avaliacao.localizacao }}</p>
+          <p><strong>Organização:</strong> {{ avaliacao.organizacao }}</p>
+          <p><strong>Preço:</strong> {{ avaliacao.preco }}</p>
+          <p><strong>Qualidade da Música:</strong> {{ avaliacao.qualidade_musica }}</p>
+          <p><strong>Comentário:</strong> {{ avaliacao.comentario || 'Sem comentário' }}</p>
+        </div>
 
-          <!-- Verifica se o comentário foi criado pelo usuário atual -->
-          <div *ngIf="comentario.id_criador_comentario === userId">
-            <!-- Botão para abrir o diálogo de edição -->
-            <button mat-button (click)="openEditDialog(comentario)" class="mr-2">Editar</button>
-            <button mat-button (click)="excluirComentario(comentario.id)">Excluir</button>
+        <!-- Lista de Comentários da Avaliação -->
+        <div *ngFor="let comentario of comentarios" class="font-michroma text-white bg-neutral-800 rounded-xl p-2 my-2">
+          <div *ngIf="comentario.id_avaliacao === avaliacao.id">
+            <label>Comentário: {{ comentario.comentario }}</label>
+
+            <!-- Verifica se o comentário foi criado pelo usuário atual -->
+            <div *ngIf="comentario.id_criador_comentario === userId">
+              <!-- Botão para abrir o diálogo de edição -->
+              <button mat-button (click)="openEditDialog(comentario)" class="mr-2 mb-2">Editar</button>
+              <button mat-button (click)="excluirComentario(comentario.id)">Excluir</button>
+            </div>
           </div>
         </div>
       </div>
+      
 
       <!-- Formulário para adicionar comentário -->
       <div *ngIf="avaliacao.id_criador_avaliacao == userId">
         <textarea class="" [(ngModel)]="novoComentario" placeholder="Escreva um comentário..." rows="4" cols="50"></textarea>
-        <div class="flex justify-end px-4">
-          <button (click)="adicionarComentario(avaliacao.id)" class="button-default">Adicionar comentário</button>
+        <div class="flex ">
+          
+          <button (click)="adicionarComentario(avaliacao.id)" class="button-default mb-2">Adicionar comentário</button>
         </div>
         
-      </div>
-
-      <!-- Botões de editar e excluir avaliação -->
-      <div *ngIf="avaliacao.id_criador_avaliacao == userId">
-        <button (click)="editarAvaliacao(avaliacao.id)" class="text-white button-default">Editar Avaliação</button>
-        <button (click)="excluirAvaliacao(avaliacao.id)" class="text-white button-default ml-2">Excluir Avaliação</button>
       </div>
 
       <hr />

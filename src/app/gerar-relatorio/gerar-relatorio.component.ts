@@ -2,6 +2,7 @@ import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { Chart } from 'chart.js/auto';
 import { FestasService } from '../services/festas.service'; // Importe o serviço
 import { FestaInterface } from '../../interfaces/FestaInterface'; // Importe o modelo
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gerar-relatorio',
@@ -12,7 +13,7 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
   chart!: Chart;
   festasPorMes: number[] = [0,0,0,0,0,0,0,0,0,0,0,0]; // Array para armazenar as contagens de festas por mês
 
-  constructor(private festasService: FestasService) {}
+  constructor(private festasService: FestasService, private router: Router) {}
 
   ngOnInit() {
     this.carregarDados();
@@ -178,5 +179,25 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
         }
       });
     }
+  }
+
+  navigateToCadastroFesta(): void {
+    this.router.navigate(['/cadastrarFesta']);
+  }
+
+  navigateToLogout(): void {
+    this.router.navigate(['/']);
+  }
+
+  navigateToEdit():void{
+    this.router.navigate(['/editarPerfil']);
+  }
+
+  navigateToFestas(): void {
+    this.router.navigate(['/lobby'])
+  }
+
+  navigateToRelatorio(): void {
+    this.router.navigate(['/gerarRelatorio'])
   }
 }

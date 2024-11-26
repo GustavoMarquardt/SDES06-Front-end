@@ -1,13 +1,26 @@
-<div class="flex flex-col content-center pt-10 w-full h-full">
-  <div class="w-5/12">
-    <canvas id="barChart1"></canvas>
-  </div>
-  <div class="flex flex-row h-full w-full">
+<div class="bg-default content-center justify-start">
+  <nav class="nav-default">
+    <ul>
+      <button class="button-lobby font-michroma" (click)="navigateToCadastroFesta()">Cadastrar Festas</button>
+      <button class="button-lobby font-michroma" (click)="navigateToFestas()">Festas</button>
+      <button class="button-lobby font-michroma" (click)="navigateToEdit()">Editar Perfil</button>
+      <button class="button-lobby font-michroma text-white font-bold" (click)="navigateToRelatorio()">Relatório</button>
+    </ul>
+  </nav>
+
+  <div class="flex flex-col content-center pt-10 w-full h-full">
     <div class="w-5/12">
-          <canvas id="barChart2"></canvas>
+      <canvas id="barChart1"></canvas>
     </div>
-    <div class="w-5/12">
-        <canvas id="barChart3"></canvas>
+    <div class="flex flex-row h-full w-full">
+      <div class="w-5/12">
+            <canvas id="barChart2"></canvas>
+      </div>
+      <div class="w-5/12">
+          <canvas id="barChart3"></canvas>
+      </div>
     </div>
   </div>
 </div>
+
+

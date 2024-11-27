@@ -139,6 +139,6 @@ export class LobbyComponent {
   }
 
   navigateToRelatorio(): void {
-    this.router.navigate(['/gerarRelatorio'])
+    this.router.navigate(['/selecionarAno'])
   }
 }

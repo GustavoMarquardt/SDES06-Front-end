@@ -95,6 +95,6 @@ export class CadastroFestaComponent {
   }
 
   navigateToRelatorio(): void {
-    this.router.navigate(['/gerarRelatorio'])
+    this.router.navigate(['/selecionarAno'])
   }
 }

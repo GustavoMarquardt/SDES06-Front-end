@@ -1,13 +1,5 @@
-<div class="bg-default content-center justify-start">
-  <nav class="nav-default">
-    <ul>
-      <button class="button-lobby font-michroma" (click)="navigateToCadastroFesta()">Cadastrar Festas</button>
-      <button class="button-lobby font-michroma" (click)="navigateToFestas()">Festas</button>
-      <button class="button-lobby font-michroma" (click)="navigateToEdit()">Editar Perfil</button>
-      <button class="button-lobby font-michroma text-white font-bold" (click)="navigateToRelatorio()">Relatório</button>
-    </ul>
-  </nav>
-
+<div class="bg-white content-center justify-start">
+  <button class="button-lobby self-start text-2xl w-fit pt-10 text-black" type="button" (click)="navigateToSelecionarAno()"> &lt; Voltar</button>
   <div class="flex flex-col content-center pt-10 w-full h-full">
     <div class="w-5/12">
       <canvas id="barChart1"></canvas>

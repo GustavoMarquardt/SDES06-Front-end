@@ -128,13 +128,11 @@ export class ListaFestasComponent {
   // Dentro de ListaFestasComponent
   navigateToAvaliarFesta(festaId: string): void {
     const userId = sessionStorage.getItem('userId');
-    console.log('VCS NÃO FAZEM MERDA NENHUMA',userId);
     this.router.navigate([`avaliar/${festaId}/${userId}`]);
   }
 
   navigateToAvaliacoesFesta(festaId: string): void {
     const userId = sessionStorage.getItem('userId');
-    console.log('VSF FILHO DA PUTA',userId);
     this.router.navigate([`avaliacoes/${festaId}/${userId}`]);
   }
   
@@ -143,6 +141,6 @@ export class ListaFestasComponent {
   }
 
   navigateToRelatorio(): void {
-    this.router.navigate(['/gerarRelatorio'])
+    this.router.navigate(['/selecionarAno'])
   }
 }

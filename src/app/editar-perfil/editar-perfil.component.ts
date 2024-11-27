@@ -101,6 +101,6 @@ export class EditarPerfilComponent implements OnInit {
   }
 
   navigateToRelatorio(): void {
-    this.router.navigate(['/gerarRelatorio'])
+    this.router.navigate(['/selecionarAno'])
   }
 }

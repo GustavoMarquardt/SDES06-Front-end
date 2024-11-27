@@ -4,6 +4,7 @@ import { FestasService } from '../services/festas.service'; // Importe o serviç
 import { FestaInterface } from '../../interfaces/FestaInterface'; // Importe o modelo
 import { AvaliacoesService } from '../services/avalicao.service'; // Importe o serviço
 import { AvalicaoInterface } from '../../interfaces/AvaliacaoInterface'; // Importe o modelo
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -27,16 +28,26 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
       this.initializeChart1('barChart1', 'chart1')
       this.initializeChart2('barChart2', 'chart2')
       this.initializeChart3('barChart3', 'chart3')
-    }, 400)
+    }, 300)
   }
 
   carregarDados() {
+    let anoRelatorio = 2025
     this.festasService.getAllFestas().subscribe(response => {
-  
       // Acessar diretamente a propriedade 'festas' da resposta
-      const festas: FestaInterface[] = response.festas;
+      let festas: FestaInterface[] = response.festas;
+      console.log("Festas antes de tudo:", festas)
   
-      // Processar as festas e contar por mês
+    
+      festas.forEach(festa => {
+        const data = new Date(festa.data_e_hora);
+        let ano = data.getFullYear()
+        if(ano == anoRelatorio) festas = festas.splice(festas.indexOf(festa), 1)
+      })
+      
+      console.log("Festas depois de tudo:", festas)
+
+      
       festas.forEach(festa => {
         const data = new Date(festa.data_e_hora);
         const mes = data.getMonth(); // Retorna o mês (0 = Janeiro, 11 = Dezembro)
@@ -54,8 +65,6 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
               const mes = data.getMonth();
               this.qualidadePorMes[mes] += (av.atendimento + av.bar + av.localizcao + av.organizacao + av.preco + av.qualidade_musica)/6
               avaliacoesPorMes[mes]++
-              console.log("Qualidade por mes:", this.qualidadePorMes)
-              //console.log("N° Avaliacoes: ", n_avaliacoes)
             })
           }
         })
@@ -72,8 +81,6 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
           i++
         })
         this.qualidadePorMes = this.qualidadePorMes.slice(0, 12)
-        console.log("N° de avaliacoes por mes: ", avaliacoesPorMes)
-        console.log("Qualidade por mes final:", this.qualidadePorMes)
       }, 150)
 
 
@@ -107,7 +114,7 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
       datasets: [{
         label: 'Festas por Mês',
         data: this.festasPorMes, // Substitua pelos dados reais
-        backgroundColor: 'rgba(75, 192, 192, 0.3)',
+        backgroundColor: 'rgba(0, 255, 0, 0.3)',
         borderColor: 'rgba(0, 0, 0, 1)',
         borderWidth: 1
       }]
@@ -151,7 +158,7 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
       datasets: [{
         label: 'Avaliação Média das Festas',
         data: this.qualidadePorMes, // Substitua pelos dados reais
-        backgroundColor: 'rgba(75, 192, 192, 0.3)',
+        backgroundColor: 'rgba(255, 0, 0, 0.3)',
         borderColor: 'rgba(0, 0, 0, 1)',
         borderWidth: 1
       }]
@@ -193,9 +200,9 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
         'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
       ],
       datasets: [{
-        label: 'Festas por Mês',
+        label: 'Capacidade Máxima Média Mensal',
         data: this.capacidadePorMes, // Substitua pelos dados reais
-        backgroundColor: 'rgba(75, 192, 192, 0.3)',
+        backgroundColor: 'rgba(0, 0, 255, 0.3)',
         borderColor: 'rgba(0, 0, 0, 1)',
         borderWidth: 1
       }]
@@ -215,7 +222,7 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
               title: { display: true, text: 'Meses' }
             },
             y: {
-              title: { display: true, text: 'Quantidade de Festas' },
+              title: { display: true, text: 'Capacidade Médias' },
               beginAtZero: true
             }
           },
@@ -228,24 +235,7 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
       });
     }
   }
-
-  navigateToCadastroFesta(): void {
-    this.router.navigate(['/cadastrarFesta']);
-  }
-
-  navigateToLogout(): void {
-    this.router.navigate(['/']);
-  }
-
-  navigateToEdit():void{
-    this.router.navigate(['/editarPerfil']);
-  }
-
-  navigateToFestas(): void {
-    this.router.navigate(['/lobby'])
-  }
-
-  navigateToRelatorio(): void {
-    this.router.navigate(['/gerarRelatorio'])
+  navigateToSelecionarAno(): void {
+    this.router.navigate(['/selecionarAno'])
   }
 }

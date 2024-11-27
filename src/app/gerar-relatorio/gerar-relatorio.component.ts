@@ -44,7 +44,6 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
       // Acessar diretamente a propriedade 'festas' da resposta
       let festas: FestaInterface[] = response.festas;
       let festasAux: FestaInterface[] = [...festas]
-
     
       console.log("Festas antes de tudo:", festas)
   

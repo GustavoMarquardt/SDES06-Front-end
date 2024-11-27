@@ -1,10 +1,10 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { Chart } from 'chart.js/auto';
-import { FestasService } from '../services/festas.service'; // Importe o serviço
-import { FestaInterface } from '../../interfaces/FestaInterface'; // Importe o modelo
-import { AvaliacoesService } from '../services/avalicao.service'; // Importe o serviço
-import { AvalicaoInterface } from '../../interfaces/AvaliacaoInterface'; // Importe o modelo
-
+import { FestasService } from '../services/festas.service'; 
+import { FestaInterface } from '../../interfaces/FestaInterface'; 
+import { AvaliacoesService } from '../services/avalicao.service'; 
+import { AvalicaoInterface } from '../../interfaces/AvaliacaoInterface'; 
+import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,34 +18,50 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
   festasPorMes: number[] = [0,0,0,0,0,0,0,0,0,0,0,0];
   qualidadePorMes: number[] = [0,0,0,0,0,0,0,0,0,0,0,0];
   capacidadePorMes: number[] = [0,0,0,0,0,0,0,0,0,0,0,0];
+  anoRelatorio: number = new Date().getFullYear();
 
-  constructor(private festasService: FestasService, private avaliacoesService: AvaliacoesService, private router: Router) {}
-
+  constructor(private festasService: FestasService, 
+              private avaliacoesService: AvaliacoesService, 
+              private router: Router,
+              private route: ActivatedRoute // Injete o ActivatedRoute
+            ) {}
 
   ngOnInit() {
+    const ano = this.route.snapshot.paramMap.get('ano');
+    if (ano) {
+      this.anoRelatorio = parseInt(ano, 10); // Converta para número
+    }
     this.carregarDados();
     setTimeout(() => {
       this.initializeChart1('barChart1', 'chart1')
       this.initializeChart2('barChart2', 'chart2')
       this.initializeChart3('barChart3', 'chart3')
-    }, 300)
+    }, 1500)
   }
 
   carregarDados() {
-    let anoRelatorio = 2025
     this.festasService.getAllFestas().subscribe(response => {
       // Acessar diretamente a propriedade 'festas' da resposta
       let festas: FestaInterface[] = response.festas;
+      let festasAux: FestaInterface[] = [...festas]
+
+    
       console.log("Festas antes de tudo:", festas)
   
-    
+      let i = 0
       festas.forEach(festa => {
+        //console.log("Festas: ",festas)
+        ///console.log("Festa atual: ",festa.nome_da_festa)
         const data = new Date(festa.data_e_hora);
         let ano = data.getFullYear()
-        if(ano == anoRelatorio) festas = festas.splice(festas.indexOf(festa), 1)
+        //console.log("Ano da festa atual: ", ano)
+        //console.log("Index da festa:", festas.indexOf(festa), 1)
+        if(ano != this.anoRelatorio) festasAux.splice(festasAux.indexOf(festa), 1)
       })
       
+      festas = festasAux
       console.log("Festas depois de tudo:", festas)
+      console.log("FestasAux depois de tudo:", festasAux)
 
       
       festas.forEach(festa => {
@@ -84,21 +100,13 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
       }, 150)
 
 
+     setTimeout(() => {
       festas.forEach(festa => {
         const data = new Date(festa.data_e_hora);
         const mes = data.getMonth(); // Retorna o mês (0 = Janeiro, 11 = Dezembro)
-        this.capacidadePorMes[mes] += festa.capacidade
+        this.capacidadePorMes[mes] += Math.round(festa.capacidade/(this.festasPorMes[mes]))
       });
-
-      this.qualidadePorMes.forEach(c => {
-        let i = 0
-        if(!this.festasPorMes[i]){
-          this.capacidadePorMes[i] = 0
-        }
-        else this.capacidadePorMes[i] = c/this.festasPorMes[i]
-        i++
-      })
-
+     }, 0); 
     });
   }
 
@@ -235,6 +243,7 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
       });
     }
   }
+
   navigateToSelecionarAno(): void {
     this.router.navigate(['/selecionarAno'])
   }

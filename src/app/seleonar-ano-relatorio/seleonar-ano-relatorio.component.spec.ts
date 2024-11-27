@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SeleonarAnoRelatorioComponent } from './seleonar-ano-relatorio.component';
+import { SelecionarAnoRelatorioComponent } from './seleonar-ano-relatorio.component';
 
 describe('SeleonarAnoRelatorioComponent', () => {
-  let component: SeleonarAnoRelatorioComponent;
-  let fixture: ComponentFixture<SeleonarAnoRelatorioComponent>;
+  let component: SelecionarAnoRelatorioComponent;
+  let fixture: ComponentFixture<SelecionarAnoRelatorioComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SeleonarAnoRelatorioComponent]
+      imports: [SelecionarAnoRelatorioComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SeleonarAnoRelatorioComponent);
+    fixture = TestBed.createComponent(SelecionarAnoRelatorioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

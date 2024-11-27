@@ -4,101 +4,73 @@ import { FestasService } from '../services/festas.service'; // Importe o serviç
 import { FestaInterface } from '../../interfaces/FestaInterface'; // Importe o modelo
 import { AvaliacoesService } from '../services/avalicao.service'; // Importe o serviço
 import { AvalicaoInterface } from '../../interfaces/AvaliacaoInterface'; // Importe o modelo
-
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-gerar-relatorio',
   templateUrl: './gerar-relatorio.component.html',
   styleUrls: ['./gerar-relatorio.component.css']
 })
-
 export class GerarRelatorioComponent implements AfterViewInit, OnInit {
   chart!: Chart;
-  festasPorMes: number[] = [0,0,0,0,0,0,0,0,0,0,0,0];
-  qualidadePorMes: number[] = [0,0,0,0,0,0,0,0,0,0,0,0];
-  capacidadePorMes: number[] = [0,0,0,0,0,0,0,0,0,0,0,0];
+  festasPorMes: number[] = Array(12).fill(0);
+  qualidadePorMes: number[] = Array(12).fill(0);
+  capacidadePorMes: number[] = Array(12).fill(0);
 
-  constructor(private festasService: FestasService, private avaliacoesService: AvaliacoesService, private router: Router) {}
-
+  constructor(
+    private festasService: FestasService,
+    private avaliacoesService: AvaliacoesService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.carregarDados();
-    setTimeout(() => {
-      this.initializeChart1('barChart1', 'chart1')
-      this.initializeChart2('barChart2', 'chart2')
-      this.initializeChart3('barChart3', 'chart3')
-    }, 300)
+    const anoRelatorio = parseInt(this.route.snapshot.paramMap.get('ano') || '0', 10);
+    if (anoRelatorio) {
+      this.carregarDados(anoRelatorio);
+      setTimeout(() => {
+        this.initializeChart1('barChart1', 'chart1');
+        this.initializeChart2('barChart2', 'chart2');
+        this.initializeChart3('barChart3', 'chart3');
+      }, 300);
+    } else {
+      console.error('Ano inválido para relatório.');
+    }
   }
 
-  carregarDados() {
-    let anoRelatorio = 2025
+  carregarDados(anoRelatorio: number) {
     this.festasService.getAllFestas().subscribe(response => {
-      // Acessar diretamente a propriedade 'festas' da resposta
-      let festas: FestaInterface[] = response.festas;
-      console.log("Festas antes de tudo:", festas)
-  
-    
-      festas.forEach(festa => {
+      let festas: FestaInterface[] = response.festas.filter(festa => {
         const data = new Date(festa.data_e_hora);
-        let ano = data.getFullYear()
-        if(ano == anoRelatorio) festas = festas.splice(festas.indexOf(festa), 1)
-      })
-      
-      console.log("Festas depois de tudo:", festas)
-
-      
-      festas.forEach(festa => {
-        const data = new Date(festa.data_e_hora);
-        const mes = data.getMonth(); // Retorna o mês (0 = Janeiro, 11 = Dezembro)
-        this.festasPorMes[mes]++;
+        return data.getFullYear() === anoRelatorio;
       });
-      this.festasPorMes = this.festasPorMes.slice(0, 12)
 
+      festas.forEach(festa => {
+        const data = new Date(festa.data_e_hora);
+        const mes = data.getMonth(); // Janeiro = 0, Dezembro = 11
+        this.festasPorMes[mes]++;
+        this.capacidadePorMes[mes] += festa.capacidade; // Acumula a capacidade
+      });
 
-      let avaliacoesPorMes: number[] = [0,0,0,0,0,0,0,0,0,0,0,0];
+      let avaliacoesPorMes: number[] = Array(12).fill(0);
       festas.forEach(festa => {
         this.avaliacoesService.getAvaliacoesByFestaId2(festa.id).subscribe(response => {
-          if(response){
-            response.avaliacoes.forEach(av =>{
-              const data = new Date(festa.data_e_hora)
+          if (response) {
+            response.avaliacoes.forEach(av => {
+              const data = new Date(festa.data_e_hora);
               const mes = data.getMonth();
-              this.qualidadePorMes[mes] += (av.atendimento + av.bar + av.localizcao + av.organizacao + av.preco + av.qualidade_musica)/6
-              avaliacoesPorMes[mes]++
-            })
+              this.qualidadePorMes[mes] += (av.atendimento + av.bar + av.localizcao + av.organizacao + av.preco + av.qualidade_musica) / 6;
+              avaliacoesPorMes[mes]++;
+            });
           }
-        })
+        });
       });
 
-      this.qualidadePorMes = this.qualidadePorMes.slice(0, 12)
-      setTimeout(() => { 
-        let i = 0
-        this.qualidadePorMes.forEach(q => {
-          if(!avaliacoesPorMes[i]){
-            this.qualidadePorMes[i] = 0
-          }
-          else this.qualidadePorMes[i] = q/avaliacoesPorMes[i]
-          i++
-        })
-        this.qualidadePorMes = this.qualidadePorMes.slice(0, 12)
-      }, 150)
-
-
-      festas.forEach(festa => {
-        const data = new Date(festa.data_e_hora);
-        const mes = data.getMonth(); // Retorna o mês (0 = Janeiro, 11 = Dezembro)
-        this.capacidadePorMes[mes] += festa.capacidade
-      });
-
-      this.qualidadePorMes.forEach(c => {
-        let i = 0
-        if(!this.festasPorMes[i]){
-          this.capacidadePorMes[i] = 0
-        }
-        else this.capacidadePorMes[i] = c/this.festasPorMes[i]
-        i++
-      })
-
+      // Atualiza as médias após processar os dados
+      setTimeout(() => {
+        this.qualidadePorMes = this.qualidadePorMes.map((q, i) => (avaliacoesPorMes[i] ? q / avaliacoesPorMes[i] : 0));
+        this.capacidadePorMes = this.capacidadePorMes.map((c, i) => (this.festasPorMes[i] ? c / this.festasPorMes[i] : 0));
+      }, 150);
     });
   }
 
@@ -107,22 +79,16 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
   chart1!: Chart;
   initializeChart1(canvasId: string, chartProperty: 'chart1') {
     let data = {
-      labels: [
-        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
-      ],
+      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
       datasets: [{
         label: 'Festas por Mês',
-        data: this.festasPorMes, // Substitua pelos dados reais
+        data: this.festasPorMes,
         backgroundColor: 'rgba(0, 255, 0, 0.3)',
         borderColor: 'rgba(0, 0, 0, 1)',
         borderWidth: 1
       }]
     };
 
-    if (this.chart) {
-      this.chart.destroy();
-    }
     const canvas = document.getElementById(canvasId) as HTMLCanvasElement;
     if (canvas) {
       this[chartProperty] = new Chart(canvas, {
@@ -130,19 +96,10 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
         data: data,
         options: {
           scales: {
-            x: {
-              title: { display: true, text: 'Meses' }
-            },
-            y: {
-              title: { display: true, text: 'Quantidade de Festas' },
-              beginAtZero: true
-            }
+            x: { title: { display: true, text: 'Meses' } },
+            y: { title: { display: true, text: 'Quantidade de Festas' }, beginAtZero: true }
           },
-          plugins: {
-            legend: {
-              position: 'top',
-            }
-          }
+          plugins: { legend: { position: 'top' } }
         }
       });
     }
@@ -151,22 +108,16 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
   chart2!: Chart;
   initializeChart2(canvasId: string, chartProperty: 'chart2') {
     let data = {
-      labels: [
-        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
-      ],
+      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
       datasets: [{
         label: 'Avaliação Média das Festas',
-        data: this.qualidadePorMes, // Substitua pelos dados reais
+        data: this.qualidadePorMes,
         backgroundColor: 'rgba(255, 0, 0, 0.3)',
         borderColor: 'rgba(0, 0, 0, 1)',
         borderWidth: 1
       }]
     };
 
-    if (this.chart) {
-      this.chart.destroy();
-    }
     const canvas = document.getElementById(canvasId) as HTMLCanvasElement;
     if (canvas) {
       this[chartProperty] = new Chart(canvas, {
@@ -174,19 +125,10 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
         data: data,
         options: {
           scales: {
-            x: {
-              title: { display: true, text: 'Meses' }
-            },
-            y: {
-              title: { display: true, text: 'Avaliação Média' },
-              beginAtZero: true
-            }
+            x: { title: { display: true, text: 'Meses' } },
+            y: { title: { display: true, text: 'Avaliação Média' }, beginAtZero: true }
           },
-          plugins: {
-            legend: {
-              position: 'top',
-            }
-          }
+          plugins: { legend: { position: 'top' } }
         }
       });
     }
@@ -195,22 +137,16 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
   chart3!: Chart;
   initializeChart3(canvasId: string, chartProperty: 'chart3') {
     let data = {
-      labels: [
-        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
-      ],
+      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
       datasets: [{
         label: 'Capacidade Máxima Média Mensal',
-        data: this.capacidadePorMes, // Substitua pelos dados reais
+        data: this.capacidadePorMes,
         backgroundColor: 'rgba(0, 0, 255, 0.3)',
         borderColor: 'rgba(0, 0, 0, 1)',
         borderWidth: 1
       }]
     };
 
-    if (this.chart) {
-      this.chart.destroy();
-    }
     const canvas = document.getElementById(canvasId) as HTMLCanvasElement;
     if (canvas) {
       this[chartProperty] = new Chart(canvas, {
@@ -218,24 +154,16 @@ export class GerarRelatorioComponent implements AfterViewInit, OnInit {
         data: data,
         options: {
           scales: {
-            x: {
-              title: { display: true, text: 'Meses' }
-            },
-            y: {
-              title: { display: true, text: 'Capacidade Médias' },
-              beginAtZero: true
-            }
+            x: { title: { display: true, text: 'Meses' } },
+            y: { title: { display: true, text: 'Capacidade Média' }, beginAtZero: true }
           },
-          plugins: {
-            legend: {
-              position: 'top',
-            }
-          }
+          plugins: { legend: { position: 'top' } }
         }
       });
     }
   }
+
   navigateToSelecionarAno(): void {
-    this.router.navigate(['/selecionarAno'])
+    this.router.navigate(['/selecionarAno']);
   }
 }

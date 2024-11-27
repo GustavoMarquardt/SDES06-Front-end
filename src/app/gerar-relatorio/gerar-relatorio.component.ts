@@ -3,8 +3,8 @@ import { Chart } from 'chart.js/auto';
 import { FestasService } from '../services/festas.service'; // Importe o serviço
 import { FestaInterface } from '../../interfaces/FestaInterface'; // Importe o modelo
 import { AvaliacoesService } from '../services/avalicao.service'; // Importe o serviço
-import { AvalicaoInterface } from '../../interfaces/AvaliacaoInterface'; // Importe o modelo
 import { Router, ActivatedRoute } from '@angular/router';
+import interact from 'interactjs';
 
 @Component({
   selector: 'app-gerar-relatorio',

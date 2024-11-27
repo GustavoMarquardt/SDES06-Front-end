@@ -1,18 +1,30 @@
-<div class="bg-white content-center justify-start">
-  <button class="button-lobby self-start text-2xl w-fit pt-10 text-black" type="button" (click)="navigateToSelecionarAno()"> &lt; Voltar</button>
-  <div class="flex flex-col content-center pt-10 w-full h-full">
-    <div class="w-5/12">
-      <canvas id="barChart1"></canvas>
+<div class="bg-gray-100 min-h-screen flex flex-col items-center py-10">
+  <!-- Botão Voltar -->
+  <button 
+    class="font-michroma text-white bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-lg shadow-lg flex items-center gap-2 transition-all self-start mb-8 ml-8"
+    type="button" 
+    (click)="navigateToSelecionarAno()">
+    <span class="text-xl">&lt;</span> Voltar
+  </button>
+
+  <!-- Conteúdo Principal -->
+  <div class="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-10 px-4">
+    <!-- Gráfico 1 -->
+    <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center w-full">
+      <h2 class="text-2xl font-semibold text-gray-700 mb-4 text-center">Festas por Mês</h2>
+      <canvas id="barChart1" class="w-full max-w-lg lg:max-w-xl"></canvas>
     </div>
-    <div class="flex flex-row h-full w-full">
-      <div class="w-5/12">
-            <canvas id="barChart2"></canvas>
-      </div>
-      <div class="w-5/12">
-          <canvas id="barChart3"></canvas>
-      </div>
+
+    <!-- Gráfico 2 -->
+    <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center w-full">
+      <h2 class="text-2xl font-semibold text-gray-700 mb-4 text-center">Avaliação Média das Festas</h2>
+      <canvas id="barChart2" class="w-full max-w-lg lg:max-w-xl"></canvas>
+    </div>
+
+    <!-- Gráfico 3 -->
+    <div class="bg-white shadow-lg rounded-lg p-6 lg:col-span-2 flex flex-col items-center w-full">
+      <h2 class="text-2xl font-semibold text-gray-700 mb-4 text-center">Capacidade Máxima Média Mensal</h2>
+      <canvas id="barChart3" class="w-full max-w-3xl"></canvas>
     </div>
   </div>
 </div>
-
-

@@ -1,0 +1,27 @@
+<div class="bg-default content-center justify-start h-full">
+  <nav class="nav-default">
+    <ul>
+      <button class="button-lobby font-michroma" (click)="navigateToCadastroFesta()">Cadastrar Festas</button>
+      <button class="button-lobby font-michroma" (click)="navigateToFestas()">Festas</button>
+      <button class="button-lobby font-michroma" (click)="navigateToEdit()">Editar Perfil</button>
+      <button class="button-lobby font-michroma text-white font-bold" (click)="navigateToRelatorio()">Relatório</button>
+    </ul>
+  </nav>
+
+  <div>
+    <!-- Capture o evento de submissão do formulário -->
+    <form class="p-1 self-center justify-self-center mt-32" (submit)="enviou($event)">
+      <label class="text-white">Selecione o Ano:</label><br>
+      <select class="text-white bg-neutral-700 p-1 rounded px-4" name="ano" id="ano" (change)="onAnoChange($event)">
+        <option value="2022" class="text-neutral-400">Selecione um ano</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+      </select>
+      <div class="flex justify-center">
+        <button type="submit" class="button-default justify-self-center self-center mt-7 px-8" id="enviar">Gerar Relatório</button>
+      </div>
+    </form>
+  </div>
+</div>

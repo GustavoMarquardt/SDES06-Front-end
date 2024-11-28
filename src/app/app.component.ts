@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { EditComentarioDialogComponent } from './edit-comentario-dialog/edit-comentario-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     HttpClientModule,
     BrowserModule,
-    FormsModule // Add FormsModule here
+    FormsModule, // Add FormsModule here
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: []

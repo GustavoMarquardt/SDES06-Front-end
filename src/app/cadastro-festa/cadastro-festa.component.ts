@@ -93,4 +93,8 @@ export class CadastroFestaComponent {
   navigateToLobby(): void {
     this.router.navigate(['/lobby'])
   }
+
+  navigateToRelatorio(): void {
+    this.router.navigate(['/selecionarAno'])
+  }
 }

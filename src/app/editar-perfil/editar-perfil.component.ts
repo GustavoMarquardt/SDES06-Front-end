@@ -99,4 +99,8 @@ export class EditarPerfilComponent implements OnInit {
   navigateToFestas(): void {
     this.router.navigate(['/lobby'])
   }
+
+  navigateToRelatorio(): void {
+    this.router.navigate(['/selecionarAno'])
+  }
 }

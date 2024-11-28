@@ -15,5 +15,5 @@ export interface AvalicaoInterface {
 export interface AvalicaoResponse {
     id: number; // Adicione esta linha se o ID está presente
     mensagem: String;
-    avaliacao: AvalicaoInterface[];
+    avaliacoes: AvalicaoInterface[];
 }

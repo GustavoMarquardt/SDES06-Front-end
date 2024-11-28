@@ -32,8 +32,8 @@ body {
 
   .bg-default {
     @apply bg-neutral-900 
-            
-              flex w-full h-full flex-col
+              min-h-full max-h-fit
+              flex flex-col
               content-center justify-center
               border-8 border-neutral-900
               space-y-9;

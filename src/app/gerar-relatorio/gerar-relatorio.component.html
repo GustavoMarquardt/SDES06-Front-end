@@ -30,7 +30,7 @@
 
   <!-- Lista das Top 5 Festas -->
   <div class="w-full max-w-4xl bg-white shadow-lg rounded-lg p-6 mt-10">
-    <h2 class="text-2xl font-semibold text-gray-700 mb-4 text-center">Top 5 Festas do Ano (Melhores Avaliações)</h2>
+    <h2 class="text-2xl font-semibold text-gray-700 mb-4 text-center">Festas mais bem avaliadas do ano</h2>
       <!-- Lista das Top 5 Festas -->
       <ol class="list-decimal list-inside text-gray-800 text-lg">
         <li *ngFor="let festa of topFestas" class="font-michroma">
@@ -47,12 +47,12 @@
   </div>
 
   <div class="w-full max-w-4xl bg-white shadow-lg rounded-lg p-6 mt-10">
-    <h2 class="text-2xl font-semibold text-gray-700 mb-4 text-center">Top 5 Maiores Festas (Capacidade)</h2>
+    <h2 class="text-2xl font-semibold text-gray-700 mb-4 text-center">Maoires festas do ano</h2>
     
     <!-- Lista das Top 5 Maiores Festas -->
     <ol class="list-decimal list-inside text-gray-800 text-lg" *ngIf="topFestasCapacidade && topFestasCapacidade.length > 0">
       <li *ngFor="let festa of topFestasCapacidade" class="font-michroma">
-        <span class="font-semibold">{{ festa.nome }}</span> - Capacidade Média: <span class="font-bold">{{ festa.capacidadeMedia }}</span>
+        <span class="font-semibold">{{ festa.nome }}</span> - Capacidade: <span class="font-bold">{{ festa.capacidadeMedia }}</span><span> Pessoas</span>
       </li>
     </ol>
   
@@ -63,7 +63,7 @@
   </div>
 
   <div class="w-full max-w-4xl bg-white shadow-lg rounded-lg p-6 mt-10">
-    <h2 class="text-2xl font-semibold text-gray-700 mb-4 text-center">Meses com Mais Festas</h2>
+    <h2 class="text-2xl font-semibold text-gray-700 mb-4 text-center">Meses em ordem da quantidade de festas</h2>
     <ol class="list-decimal list-inside text-gray-800 text-lg" *ngIf="topMeses && topMeses.length > 0">
       <li *ngFor="let mes of topMeses" class="font-michroma">
         <span class="font-semibold">{{ mes.mes }}</span> - Festas: <span class="font-bold">{{ mes.quantidade }}</span>
